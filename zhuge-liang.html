@@ -3,52 +3,67 @@
 
 <style>
   :root {
-    --bg: #f5efe4;
-    --bg-alt: #ede5d6;
-    --bg-card: #fffcf5;
-    --text: #2e2b26;
-    --text-heading: #1a1a1e;
-    --text-dim: #6b6458;
-    --text-faint: #9a9083;
-    --vermillion: #c23b22;
-    --gold: #b8963e;
+    --bg: #f0ebe0;
+    --bg-alt: #e8e1d2;
+    --bg-card: #f8f4ec;
+    --text: #2a2722;
+    --text-heading: #1a1815;
+    --text-dim: #6d645a;
+    --text-faint: #9a9088;
+    --accent: #b83a28;
+    --gold: #b08a30;
+    --gold-hi: #d4a83e;
     --rule: #d0c4ae;
     --rule-faint: #ddd2be;
-    --seal-glow: rgba(194,59,34,0.12);
-    --shadow: rgba(26,26,30,0.08);
-    --sky-top: #c8d8e8;
-    --sky-bot: #e8dfd0;
-    --mtn-far: #c8bfb0;
-    --mtn-mid: #b5ada0;
-    --mtn-near: #a39b8e;
-    --ground: #d4ccbc;
-    --ground-line: #c0b8a8;
-    --platform: #a89b88;
-    --platform-hi: #b8ab98;
-    --cloud: #ffffff;
-    --bubble-bg: #fffdf8;
-    --bubble-border: #e0d8c8;
+    --seal-glow: rgba(184,58,40,0.15);
+    --shadow: rgba(26,24,21,0.08);
+    --shadow-md: rgba(26,24,21,0.14);
+    --sky-top: #bccfe2;
+    --sky-bot: #ddd6c8;
+    --mtn-far: #c4bbb0;
+    --mtn-mid: #b0a89c;
+    --mtn-near: #9e9688;
+    --court: #ccc4b4;
+    --court-line: #bab2a2;
+    --stone: #a09888;
+    --stone-hi: #b8b0a0;
+    --cloud: rgba(255,255,255,0.5);
+    --fog: rgba(240,235,224,0.5);
+    --bubble-bg: #fefcf6;
+    --bubble-border: #ddd6c8;
+    --mbubble-bg: #faf6ee;
+    --mbubble-border: #e0d8ca;
+    --skin: #e8c9a0;
+    --skin-shade: #d4a574;
   }
 
   @media(prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --bg:#151413;--bg-alt:#1c1b18;--bg-card:#222120;--text:#d0c8b8;--text-heading:#e8e0d0;
-      --text-dim:#a89e8e;--text-faint:#6e665c;--vermillion:#d4503a;--gold:#c9a74a;
-      --rule:#332f28;--rule-faint:#2a2724;--seal-glow:rgba(212,80,58,0.18);
-      --shadow:rgba(0,0,0,0.25);--sky-top:#141312;--sky-bot:#1a1918;
-      --mtn-far:#1e1d1a;--mtn-mid:#1a1918;--mtn-near:#222120;
-      --ground:#1a1918;--ground-line:#252320;--platform:#2c2a26;--platform-hi:#343230;
-      --cloud:#252320;--bubble-bg:#1e1d1a;--bubble-border:#333028;
+      --bg:#131210;--bg-alt:#1a1916;--bg-card:#201f1c;--text:#ccc4b4;--text-heading:#e4dcd0;
+      --text-dim:#a09888;--text-faint:#686058;--accent:#d04a38;--gold:#c49a3e;--gold-hi:#dab04a;
+      --rule:#302c26;--rule-faint:#282520;--seal-glow:rgba(208,74,56,0.2);
+      --shadow:rgba(0,0,0,0.3);--shadow-md:rgba(0,0,0,0.4);
+      --sky-top:#0e0d0c;--sky-bot:#161514;--mtn-far:#1c1b18;--mtn-mid:#181716;
+      --mtn-near:#201f1c;--court:#181716;--court-line:#222120;
+      --stone:#282624;--stone-hi:#302e2c;--cloud:rgba(40,38,36,0.5);
+      --fog:rgba(19,18,16,0.5);
+      --bubble-bg:#1c1b18;--bubble-border:#302c26;
+      --mbubble-bg:#1a1918;--mbubble-border:#2a2826;
+      --skin:#c8a880;--skin-shade:#a88060;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#151413;--bg-alt:#1c1b18;--bg-card:#222120;--text:#d0c8b8;--text-heading:#e8e0d0;
-    --text-dim:#a89e8e;--text-faint:#6e665c;--vermillion:#d4503a;--gold:#c9a74a;
-    --rule:#332f28;--rule-faint:#2a2724;--seal-glow:rgba(212,80,58,0.18);
-    --shadow:rgba(0,0,0,0.25);--sky-top:#141312;--sky-bot:#1a1918;
-    --mtn-far:#1e1d1a;--mtn-mid:#1a1918;--mtn-near:#222120;
-    --ground:#1a1918;--ground-line:#252320;--platform:#2c2a26;--platform-hi:#343230;
-    --cloud:#252320;--bubble-bg:#1e1d1a;--bubble-border:#333028;
+    --bg:#131210;--bg-alt:#1a1916;--bg-card:#201f1c;--text:#ccc4b4;--text-heading:#e4dcd0;
+    --text-dim:#a09888;--text-faint:#686058;--accent:#d04a38;--gold:#c49a3e;--gold-hi:#dab04a;
+    --rule:#302c26;--rule-faint:#282520;--seal-glow:rgba(208,74,56,0.2);
+    --shadow:rgba(0,0,0,0.3);--shadow-md:rgba(0,0,0,0.4);
+    --sky-top:#0e0d0c;--sky-bot:#161514;--mtn-far:#1c1b18;--mtn-mid:#181716;
+    --mtn-near:#201f1c;--court:#181716;--court-line:#222120;
+    --stone:#282624;--stone-hi:#302e2c;--cloud:rgba(40,38,36,0.5);
+    --fog:rgba(19,18,16,0.5);
+    --bubble-bg:#1c1b18;--bubble-border:#302c26;
+    --mbubble-bg:#1a1918;--mbubble-border:#2a2826;
+    --skin:#c8a880;--skin-shade:#a88060;
   }
 
   body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;line-height:1.8;min-height:100vh}
@@ -58,32 +73,54 @@
   .scene{position:relative;max-width:960px;margin:0 auto}
   .scene-svg{width:100%;height:auto;display:block}
 
-  .speech-bubble{
-    position:absolute;top:3%;left:50%;transform:translateX(-50%);
+  /* ── ZL main bubble ── */
+  .zl-bubble{
+    position:absolute;top:1%;left:50%;transform:translateX(-50%);
     background:var(--bubble-bg);border:1.5px solid var(--bubble-border);
-    border-radius:18px;padding:18px 26px 14px;max-width:340px;min-width:180px;
-    text-align:center;box-shadow:0 6px 24px var(--shadow);z-index:10;
+    border-radius:18px;padding:16px 24px 12px;max-width:340px;min-width:200px;
+    text-align:center;box-shadow:0 6px 24px var(--shadow-md);z-index:12;
   }
-  .speech-bubble::before{
+  .zl-bubble::before{
     content:'';position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);
     border:14px solid transparent;border-top-color:var(--bubble-border);
   }
-  .speech-bubble::after{
+  .zl-bubble::after{
     content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);
     border:13px solid transparent;border-top-color:var(--bubble-bg);
   }
-  .bubble-text{
+  .zl-bubble .b-text{
     font-family:'Gowun Batang',serif;font-size:14px;line-height:1.75;
-    color:var(--text);margin:0 0 8px;
+    color:var(--text);margin:0 0 6px;
   }
-  .bubble-attr{
-    font-family:'Noto Sans KR',sans-serif;font-weight:300;font-size:11px;
-    color:var(--text-faint);letter-spacing:1px;
+  .zl-bubble .b-attr{
+    font-weight:300;font-size:11px;color:var(--text-faint);letter-spacing:1px;
   }
 
+  /* ── Minister bubbles ── */
+  .m-bubble{
+    position:absolute;
+    background:var(--mbubble-bg);border:1px solid var(--mbubble-border);
+    border-radius:14px;padding:8px 14px;max-width:170px;
+    text-align:center;box-shadow:0 3px 12px var(--shadow);z-index:11;
+    font-size:13px;line-height:1.6;color:var(--text-dim);
+  }
+  .m-bubble::before{
+    content:'';position:absolute;bottom:-9px;left:50%;transform:translateX(-50%);
+    border:9px solid transparent;border-top-color:var(--mbubble-border);
+  }
+  .m-bubble::after{
+    content:'';position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
+    border:8px solid transparent;border-top-color:var(--mbubble-bg);
+  }
+  .m-bubble .m-name{display:block;font-size:10px;color:var(--text-faint);margin-top:4px;letter-spacing:0.5px}
+  .m1{left:2%;top:54%}
+  .m2{left:19%;top:44%}
+  .m3{right:19%;top:44%}
+  .m4{right:2%;top:54%}
+
   /* ── Title ── */
-  .title-area{text-align:center;padding:32px 20px 40px;background:var(--bg)}
-  .title-date{font-weight:300;font-size:12px;letter-spacing:3px;color:var(--text-dim);margin-bottom:12px}
+  .title-area{text-align:center;padding:28px 20px 36px;background:var(--bg)}
+  .title-date{font-weight:300;font-size:12px;letter-spacing:3px;color:var(--text-dim);margin-bottom:10px}
   .title-area h1{
     font-family:'Noto Serif KR',serif;font-weight:900;font-size:48px;
     letter-spacing:10px;color:var(--text-heading);margin:0;text-wrap:balance;
@@ -102,7 +139,7 @@
 
   .section{margin-bottom:48px}
   .section-head{text-align:center;margin-bottom:36px}
-  .section-label{font-weight:300;font-size:11px;letter-spacing:4px;color:var(--vermillion);display:block;margin-bottom:8px}
+  .section-label{font-weight:300;font-size:11px;letter-spacing:4px;color:var(--accent);display:block;margin-bottom:8px}
   .section-head h2{font-family:'Noto Serif KR',serif;font-weight:700;font-size:24px;color:var(--text-heading);margin:0;text-wrap:balance}
   .section-head .hanja{font-weight:600;font-size:0.8em;color:var(--text-dim);margin-left:2px}
   .section-desc{font-weight:300;font-size:13px;color:var(--text-faint);margin:8px 0 0}
@@ -120,18 +157,21 @@
   .closing-text{font-size:16px;margin:0 0 36px;line-height:2}
   .seal-area{display:inline-block;transform:rotate(-7deg);filter:drop-shadow(0 0 12px var(--seal-glow));margin-bottom:28px}
   .seal-box{
-    width:84px;height:84px;border:3px solid var(--vermillion);
+    width:84px;height:84px;border:3px solid var(--accent);
     display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;
   }
-  .seal-box::before{content:'';position:absolute;inset:5px;border:1px solid var(--vermillion);opacity:0.5}
-  .seal-char{font-family:'Noto Serif KR',serif;font-weight:900;font-size:24px;color:var(--vermillion);line-height:1.15}
+  .seal-box::before{content:'';position:absolute;inset:5px;border:1px solid var(--accent);opacity:0.5}
+  .seal-char{font-family:'Noto Serif KR',serif;font-weight:900;font-size:24px;color:var(--accent);line-height:1.15}
   .closing-date{font-weight:300;font-size:12px;color:var(--text-faint);letter-spacing:2px}
   .closing-note{font-weight:300;font-size:11px;color:var(--text-faint);margin-top:40px;padding-top:20px;border-top:1px solid var(--rule-faint);line-height:1.7;opacity:0.7}
 
   @media(max-width:640px){
     .title-area h1{font-size:36px;letter-spacing:6px}
-    .speech-bubble{max-width:260px;padding:14px 18px 10px;font-size:13px;top:1%}
-    .bubble-text{font-size:13px}
+    .zl-bubble{max-width:260px;padding:12px 16px 10px;top:0}
+    .zl-bubble .b-text{font-size:13px}
+    .m-bubble{max-width:120px;font-size:11px;padding:6px 10px}
+    .m1{left:1%;top:56%} .m2{left:14%;top:46%}
+    .m3{right:14%;top:46%} .m4{right:1%;top:56%}
     .scroll-body{padding:0 16px 60px}
     .section-head h2{font-size:20px}
     .point{padding:16px 18px}
@@ -139,16 +179,18 @@
     .point p,.opening p,.section-intro,.closing-text{font-size:15px}
   }
 
-  @media(prefers-reduced-motion:reduce){.cloud-drift{animation:none !important}}
-  .cloud-drift{animation:cdrift 30s ease-in-out infinite}
-  .cloud-drift:nth-child(2){animation-delay:-10s;animation-duration:35s}
-  @keyframes cdrift{0%,100%{transform:translateX(0)}50%{transform:translateX(25px)}}
+  @media(prefers-reduced-motion:reduce){.cloud-drift,.fog-drift{animation:none !important}}
+  .cloud-drift{animation:cdrift 28s ease-in-out infinite}
+  .cloud-drift:nth-child(2){animation-delay:-12s;animation-duration:34s}
+  @keyframes cdrift{0%,100%{transform:translateX(0)}50%{transform:translateX(20px)}}
+  .fog-drift{animation:fdrift 22s ease-in-out infinite}
+  @keyframes fdrift{0%,100%{transform:translateX(0);opacity:0.4}50%{transform:translateX(30px);opacity:0.6}}
 </style>
 
 <!-- ═══════ Scene ═══════ -->
 <div class="scene-wrap">
   <div class="scene">
-    <svg class="scene-svg" viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet" aria-label="제갈량이 신하들 앞에서 우선을 들고 서 있는 장면">
+    <svg class="scene-svg" viewBox="0 0 960 560" preserveAspectRatio="xMidYMid meet" aria-label="제갈량이 신하들 앞에서 우선을 들고 서 있는 장면">
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="var(--sky-top)"/>
@@ -157,180 +199,427 @@
         <linearGradient id="zl-robe" x1=".3" y1="0" x2=".7" y2="1">
           <stop offset="0" stop-color="#4a7a9a"/><stop offset="1" stop-color="#2a5a7a"/>
         </linearGradient>
+        <linearGradient id="zl-robe2" x1=".5" y1="0" x2=".5" y2="1">
+          <stop offset="0" stop-color="#3a6a8a"/><stop offset="1" stop-color="#1e4a6a"/>
+        </linearGradient>
         <linearGradient id="zl-hat" x1=".5" y1="0" x2=".5" y2="1">
           <stop offset="0" stop-color="#3d5a80"/><stop offset="1" stop-color="#1e3a5e"/>
         </linearGradient>
+        <linearGradient id="m1robe" x1=".3" y1="0" x2=".7" y2="1">
+          <stop offset="0" stop-color="#9a4a4a"/><stop offset="1" stop-color="#7a3030"/>
+        </linearGradient>
+        <linearGradient id="m2robe" x1=".3" y1="0" x2=".7" y2="1">
+          <stop offset="0" stop-color="#3a7a4a"/><stop offset="1" stop-color="#2a5a3a"/>
+        </linearGradient>
+        <linearGradient id="m3robe" x1=".3" y1="0" x2=".7" y2="1">
+          <stop offset="0" stop-color="#5a3a7a"/><stop offset="1" stop-color="#402a5a"/>
+        </linearGradient>
+        <linearGradient id="m4robe" x1=".3" y1="0" x2=".7" y2="1">
+          <stop offset="0" stop-color="#8a7040"/><stop offset="1" stop-color="#6a5030"/>
+        </linearGradient>
+        <radialGradient id="sun-glow" cx=".5" cy=".3" r=".5">
+          <stop offset="0" stop-color="rgba(255,220,180,0.15)"/>
+          <stop offset="1" stop-color="rgba(255,220,180,0)"/>
+        </radialGradient>
       </defs>
 
       <!-- Sky -->
-      <rect width="960" height="500" fill="url(#sky)"/>
+      <rect width="960" height="560" fill="url(#sky)"/>
+      <rect width="960" height="400" fill="url(#sun-glow)"/>
 
       <!-- Clouds -->
-      <g class="cloud-drift" fill="var(--cloud)" opacity="0.45">
-        <ellipse cx="130" cy="75" rx="55" ry="18"/><ellipse cx="155" cy="65" rx="40" ry="14"/><ellipse cx="105" cy="68" rx="35" ry="12"/>
+      <g class="cloud-drift" fill="var(--cloud)">
+        <ellipse cx="140" cy="70" rx="60" ry="20"/><ellipse cx="168" cy="58" rx="45" ry="16"/><ellipse cx="112" cy="62" rx="38" ry="14"/>
       </g>
-      <g class="cloud-drift" fill="var(--cloud)" opacity="0.35">
-        <ellipse cx="780" cy="55" rx="50" ry="16"/><ellipse cx="805" cy="47" rx="35" ry="12"/><ellipse cx="755" cy="50" rx="30" ry="10"/>
+      <g class="cloud-drift" fill="var(--cloud)" opacity="0.7">
+        <ellipse cx="760" cy="50" rx="55" ry="18"/><ellipse cx="790" cy="40" rx="40" ry="14"/><ellipse cx="730" cy="44" rx="32" ry="12"/>
+      </g>
+      <g class="cloud-drift" fill="var(--cloud)" opacity="0.4" style="animation-delay:-18s;animation-duration:40s">
+        <ellipse cx="460" cy="35" rx="42" ry="12"/><ellipse cx="485" cy="28" rx="30" ry="10"/>
       </g>
 
       <!-- Mountains far -->
-      <path d="M0,320 C60,300 120,260 200,240 C300,215 360,260 440,250 C520,240 580,200 680,180 C760,165 820,200 900,190 C940,185 960,210 960,220 L960,500 L0,500Z" fill="var(--mtn-far)"/>
-      <!-- Mountains mid -->
-      <path d="M0,370 C100,340 180,310 280,300 C380,290 440,330 540,315 C640,300 720,270 840,275 C920,278 960,310 960,320 L960,500 L0,500Z" fill="var(--mtn-mid)"/>
-      <!-- Mountains near -->
-      <path d="M0,400 C120,380 220,365 340,360 C460,355 540,375 660,370 C780,365 880,380 960,385 L960,500 L0,500Z" fill="var(--mtn-near)"/>
+      <path d="M0,310 C50,295 100,258 180,235 C260,212 320,245 400,240 C480,235 530,195 640,175 C720,162 790,195 870,185 C920,180 950,205 960,215 L960,560 L0,560Z" fill="var(--mtn-far)"/>
 
-      <!-- Pine trees -->
-      <g fill="var(--mtn-near)" opacity="0.6">
-        <g transform="translate(680,173)"><polygon points="-4,3 0,-7 4,3"/><polygon points="-3,7 0,1 3,7"/><rect x="-0.6" y="7" width="1.2" height="5"/></g>
-        <g transform="translate(690,178)"><polygon points="-3,2 0,-5 3,2"/><polygon points="-2.5,5 0,0 2.5,5"/><rect x="-0.5" y="5" width="1" height="4"/></g>
+      <!-- Pine trees on far ridge -->
+      <g fill="var(--mtn-mid)" opacity="0.5">
+        <g transform="translate(640,170)"><polygon points="-5,3 0,-9 5,3"/><polygon points="-4,8 0,-1 4,8"/><rect x="-0.8" y="8" width="1.6" height="6"/></g>
+        <g transform="translate(652,176)"><polygon points="-3.5,2 0,-6 3.5,2"/><polygon points="-3,6 0,0 3,6"/><rect x="-0.5" y="6" width="1" height="5"/></g>
+        <g transform="translate(875,180)"><polygon points="-4,2.5 0,-7 4,2.5"/><polygon points="-3.5,7 0,-0.5 3.5,7"/><rect x="-0.6" y="7" width="1.2" height="5"/></g>
+        <g transform="translate(185,230)"><polygon points="-4,3 0,-8 4,3"/><polygon points="-3,7 0,0 3,7"/><rect x="-0.6" y="7" width="1.2" height="5"/></g>
       </g>
 
       <!-- Cranes -->
-      <g stroke="var(--mtn-far)" fill="none" stroke-width="1" opacity="0.2">
-        <path d="M350,120 Q356,114 362,120"/><path d="M362,120 Q368,114 374,120"/>
-        <path d="M400,135 Q404,131 408,135"/><path d="M408,135 Q412,131 416,135"/>
+      <g stroke="var(--mtn-far)" fill="none" stroke-width="1.2" opacity="0.18">
+        <path d="M340,105 Q347,98 354,105"/><path d="M354,105 Q361,98 368,105"/>
+        <path d="M385,118 Q390,113 395,118"/><path d="M395,118 Q400,113 405,118"/>
+        <path d="M375,128 Q378,125 381,128"/><path d="M381,128 Q384,125 387,128"/>
+      </g>
+
+      <!-- Mountains mid -->
+      <path d="M0,370 C80,345 160,315 260,305 C360,295 420,325 520,315 C620,305 700,275 820,278 C900,280 950,305 960,315 L960,560 L0,560Z" fill="var(--mtn-mid)"/>
+
+      <!-- Mountains near -->
+      <path d="M0,400 C100,385 200,370 320,365 C440,360 520,378 640,373 C760,368 870,380 960,388 L960,560 L0,560Z" fill="var(--mtn-near)"/>
+
+      <!-- Fog layer -->
+      <g class="fog-drift">
+        <ellipse cx="200" cy="385" rx="180" ry="18" fill="var(--fog)"/>
+        <ellipse cx="700" cy="378" rx="160" ry="15" fill="var(--fog)"/>
       </g>
 
       <!-- Ground / courtyard -->
-      <rect x="0" y="410" width="960" height="90" fill="var(--ground)"/>
-      <line x1="0" y1="410" x2="960" y2="410" stroke="var(--ground-line)" stroke-width="1"/>
-
-      <!-- Platform steps -->
-      <rect x="370" y="390" width="220" height="14" rx="3" fill="var(--platform-hi)"/>
-      <rect x="380" y="400" width="200" height="12" rx="2" fill="var(--platform)"/>
-
-      <!-- ─── Bowing ministers ─── -->
-      <!-- Minister 1 (far left, dark red, facing right) -->
-      <g transform="translate(140,410)">
-        <ellipse cx="0" cy="-8" rx="32" ry="6" fill="rgba(0,0,0,0.06)"/>
-        <path d="M-28,-12 Q-22,-50 8,-60 Q18,-56 22,-42 Q18,-22 10,-12Z" fill="#8b4a4a"/>
-        <path d="M-28,-12 Q-36,-6 -32,0 L18,0 L10,-12Z" fill="#7a3a3a"/>
-        <circle cx="14" cy="-62" r="11" fill="#e8c9a0"/>
-        <ellipse cx="16" cy="-72" rx="8" ry="5" fill="#4a4a4a"/>
-        <path d="M12" cy="-52" d="M10,-50 Q20,-44 26,-34" stroke="#e8c9a0" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <ellipse cx="28" cy="-30" rx="4.5" ry="3" fill="#e8c9a0"/>
+      <rect x="0" y="418" width="960" height="142" fill="var(--court)"/>
+      <line x1="0" y1="418" x2="960" y2="418" stroke="var(--court-line)" stroke-width="1.5"/>
+      <!-- Courtyard tile lines -->
+      <g stroke="var(--court-line)" stroke-width="0.4" opacity="0.3">
+        <line x1="0" y1="450" x2="960" y2="450"/>
+        <line x1="0" y1="490" x2="960" y2="490"/>
+        <line x1="0" y1="530" x2="960" y2="530"/>
       </g>
 
-      <!-- Minister 2 (near left, green, facing right) -->
-      <g transform="translate(280,412)">
-        <ellipse cx="0" cy="-8" rx="36" ry="7" fill="rgba(0,0,0,0.06)"/>
-        <path d="M-32,-14 Q-26,-58 10,-70 Q22,-65 26,-48 Q22,-24 12,-14Z" fill="#3a6b4a"/>
-        <path d="M-32,-14 Q-40,-7 -36,0 L20,0 L12,-14Z" fill="#2a5a3a"/>
-        <circle cx="16" cy="-72" r="12" fill="#e8c9a0"/>
-        <ellipse cx="18" cy="-83" rx="9" ry="5.5" fill="#3a3a3a"/>
-        <path d="M12,-58 Q24,-50 30,-38" stroke="#e8c9a0" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <ellipse cx="33" cy="-34" rx="5" ry="3.5" fill="#e8c9a0"/>
+      <!-- Platform (3-tier stone steps) -->
+      <rect x="350" y="392" width="260" height="10" rx="4" fill="var(--stone-hi)"/>
+      <rect x="362" y="400" width="236" height="8" rx="3" fill="var(--stone)"/>
+      <rect x="374" y="406" width="212" height="14" rx="2" fill="var(--stone)"/>
+      <line x1="374" y1="413" x2="586" y2="413" stroke="var(--court-line)" stroke-width="0.5" opacity="0.5"/>
+
+      <!-- ─── Minister 1 (far left, red, kneeling deep bow, facing right) ─── -->
+      <g transform="translate(160,418)">
+        <ellipse cx="5" cy="2" rx="42" ry="7" fill="rgba(0,0,0,0.06)"/>
+        <!-- Lower robe pooling on ground -->
+        <path d="M-30,-2 Q-34,-8 -28,-16 Q-20,-28 0,-36 Q14,-30 22,-20 Q30,-8 34,-2 Z" fill="url(#m1robe)"/>
+        <path d="M-34,-2 Q-36,2 -32,5 L36,5 Q38,2 34,-2" fill="#6a2828"/>
+        <!-- Robe fold lines -->
+        <g stroke="#5a2020" stroke-width="0.6" fill="none" opacity="0.3">
+          <path d="M-15,-6 Q-10,-18 5,-28"/>
+          <path d="M10,-4 Q12,-15 18,-22"/>
+        </g>
+        <!-- Upper body bent forward -->
+        <path d="M0,-36 Q15,-42 28,-38 Q35,-34 32,-28" fill="url(#m1robe)"/>
+        <!-- Arms extending forward -->
+        <path d="M28,-32 Q38,-30 46,-25" stroke="var(--skin)" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <ellipse cx="48" cy="-23" rx="5.5" ry="4" fill="var(--skin)" transform="rotate(-10,48,-23)"/>
+        <!-- Head (slightly raised, facing right) -->
+        <ellipse cx="36" cy="-44" rx="15" ry="17" fill="var(--skin)"/>
+        <!-- Face details -->
+        <ellipse cx="42" cy="-45" rx="2.2" ry="1.6" fill="#2d3748"/>
+        <circle cx="42.5" cy="-45.5" r="0.7" fill="white" opacity="0.7"/>
+        <path d="M39,-49 Q42,-51 45,-49" stroke="#4a3a2a" stroke-width="0.9" fill="none"/>
+        <path d="M43,-42 Q44,-40 43,-39" stroke="var(--skin-shade)" stroke-width="0.5" fill="none"/>
+        <path d="M41,-36 Q43,-35 45,-36" stroke="#a06848" stroke-width="0.8" fill="none"/>
+        <!-- Small beard -->
+        <path d="M41,-35 Q42,-28 40,-24" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Hat -->
+        <ellipse cx="36" cy="-58" rx="11" ry="5.5" fill="#2a2a2a"/>
+        <rect x="28" y="-62" width="16" height="4" rx="2" fill="#333"/>
+        <!-- Hat ornament -->
+        <circle cx="36" cy="-62" r="1.5" fill="#8a6a3a"/>
       </g>
 
-      <!-- Minister 3 (near right, purple, facing left) -->
-      <g transform="translate(680,412)">
-        <ellipse cx="0" cy="-8" rx="36" ry="7" fill="rgba(0,0,0,0.06)"/>
-        <path d="M32,-14 Q26,-58 -10,-70 Q-22,-65 -26,-48 Q-22,-24 -12,-14Z" fill="#5a3a6b"/>
-        <path d="M32,-14 Q40,-7 36,0 L-20,0 L-12,-14Z" fill="#4a2a5a"/>
-        <circle cx="-16" cy="-72" r="12" fill="#e8c9a0"/>
-        <ellipse cx="-18" cy="-83" rx="9" ry="5.5" fill="#3a3a3a"/>
-        <path d="M-12,-58 Q-24,-50 -30,-38" stroke="#e8c9a0" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <ellipse cx="-33" cy="-34" rx="5" ry="3.5" fill="#e8c9a0"/>
+      <!-- ─── Minister 2 (near left, green, kneeling upright, facing right) ─── -->
+      <g transform="translate(310,418)">
+        <ellipse cx="3" cy="2" rx="38" ry="7" fill="rgba(0,0,0,0.06)"/>
+        <!-- Lower robe pooling (seated) -->
+        <path d="M-32,-2 Q-34,-10 -28,-22 L-22,-26 L22,-26 Q30,-14 34,-2 Z" fill="#2a5a3a"/>
+        <!-- Main robe body (torso upright) -->
+        <path d="M-22,-26 Q-26,-50 -22,-80 L-10,-95 L14,-95 Q26,-80 28,-50 Q30,-30 22,-26 Z" fill="url(#m2robe)"/>
+        <!-- Inner collar V -->
+        <path d="M-6,-95 L1,-70 L8,-95" fill="#f0e6d3" stroke="#e0d6c3" stroke-width="0.4"/>
+        <!-- Belt -->
+        <rect x="-20" y="-62" width="42" height="6" rx="3" fill="#7a6a40"/>
+        <circle cx="1" cy="-59" r="3" fill="#9a8a50"/>
+        <!-- Robe fold lines -->
+        <g stroke="#1e4a30" stroke-width="0.5" fill="none" opacity="0.25">
+          <path d="M-16,-30 Q-18,-50 -16,-70"/>
+          <path d="M12,-30 Q14,-50 12,-70"/>
+          <path d="M-5,-28 Q-4,-45 -3,-62"/>
+        </g>
+        <!-- Left sleeve -->
+        <path d="M-10,-88 Q-30,-84 -38,-90 Q-42,-94 -36,-96 Q-24,-94 -12,-92" fill="url(#m2robe)"/>
+        <!-- Right sleeve -->
+        <path d="M14,-88 Q30,-84 38,-78 Q42,-74 38,-72 Q28,-76 16,-82" fill="url(#m2robe)"/>
+        <!-- Hands clasped -->
+        <ellipse cx="2" cy="-80" rx="9" ry="5" fill="var(--skin)"/>
+        <path d="M-4,-82 Q2,-76 8,-82" stroke="var(--skin-shade)" stroke-width="0.5" fill="none"/>
+        <!-- Neck -->
+        <rect x="-4" y="-106" width="10" height="14" rx="4" fill="var(--skin)"/>
+        <!-- Head -->
+        <ellipse cx="2" cy="-122" rx="18" ry="20" fill="var(--skin)"/>
+        <!-- Face (looking right toward ZL) -->
+        <ellipse cx="8" cy="-123" rx="2.8" ry="2" fill="#2d3748"/>
+        <circle cx="8.8" cy="-123.5" r="0.9" fill="white" opacity="0.7"/>
+        <ellipse cx="-4" cy="-123" rx="2.8" ry="2" fill="#2d3748"/>
+        <circle cx="-3.2" cy="-123.5" r="0.9" fill="white" opacity="0.7"/>
+        <!-- Eyebrows -->
+        <path d="M-8,-128 Q-4,-131 -1,-128" stroke="#4a3a2a" stroke-width="1.1" fill="none"/>
+        <path d="M5,-128 Q8,-131 12,-128" stroke="#4a3a2a" stroke-width="1.1" fill="none"/>
+        <!-- Nose -->
+        <path d="M2,-120 Q3,-116 2,-114" stroke="var(--skin-shade)" stroke-width="0.6" fill="none"/>
+        <!-- Mouth (slightly open - speaking) -->
+        <ellipse cx="3" cy="-109" rx="3.5" ry="2" fill="#c47858"/>
+        <path d="M0,-109 Q3,-107 6,-109" stroke="#a05838" stroke-width="0.4" fill="none"/>
+        <!-- Small goatee -->
+        <path d="M1,-107 Q2,-100 1,-95" stroke="#777" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M4,-107 Q5,-99 4,-94" stroke="#777" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <!-- Hat -->
+        <ellipse cx="2" cy="-140" rx="13" ry="6" fill="#2a2a2a"/>
+        <rect x="-8" y="-144" width="20" height="5" rx="2" fill="#333"/>
+        <circle cx="2" cy="-144" r="1.8" fill="#8a6a3a"/>
+        <!-- Hat ribbon -->
+        <path d="M-11,-138 Q-16,-130 -14,-120" stroke="#333" stroke-width="1.2" fill="none"/>
+        <path d="M15,-138 Q20,-130 18,-120" stroke="#333" stroke-width="1.2" fill="none"/>
       </g>
 
-      <!-- Minister 4 (far right, brown, facing left) -->
-      <g transform="translate(820,410)">
-        <ellipse cx="0" cy="-8" rx="32" ry="6" fill="rgba(0,0,0,0.06)"/>
-        <path d="M28,-12 Q22,-50 -8,-60 Q-18,-56 -22,-42 Q-18,-22 -10,-12Z" fill="#7a6040"/>
-        <path d="M28,-12 Q36,-6 32,0 L-18,0 L-10,-12Z" fill="#6a5030"/>
-        <circle cx="-14" cy="-62" r="11" fill="#e8c9a0"/>
-        <ellipse cx="-16" cy="-72" rx="8" ry="5" fill="#4a4040"/>
-        <path d="M-10,-50 Q-20,-44 -26,-34" stroke="#e8c9a0" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <ellipse cx="-28" cy="-30" rx="4.5" ry="3" fill="#e8c9a0"/>
+      <!-- ─── Minister 3 (near right, purple, kneeling upright, facing left) ─── -->
+      <g transform="translate(650,418)">
+        <ellipse cx="-3" cy="2" rx="38" ry="7" fill="rgba(0,0,0,0.06)"/>
+        <!-- Lower robe pooling -->
+        <path d="M32,-2 Q34,-10 28,-22 L22,-26 L-22,-26 Q-30,-14 -34,-2 Z" fill="#30204a"/>
+        <!-- Main robe body -->
+        <path d="M22,-26 Q26,-50 22,-80 L10,-95 L-14,-95 Q-26,-80 -28,-50 Q-30,-30 -22,-26 Z" fill="url(#m3robe)"/>
+        <!-- Inner collar V -->
+        <path d="M6,-95 L-1,-70 L-8,-95" fill="#f0e6d3" stroke="#e0d6c3" stroke-width="0.4"/>
+        <!-- Belt -->
+        <rect x="-22" y="-62" width="42" height="6" rx="3" fill="#7a6a40"/>
+        <circle cx="-1" cy="-59" r="3" fill="#9a8a50"/>
+        <!-- Fold lines -->
+        <g stroke="#30204a" stroke-width="0.5" fill="none" opacity="0.25">
+          <path d="M16,-30 Q18,-50 16,-70"/>
+          <path d="M-12,-30 Q-14,-50 -12,-70"/>
+          <path d="M5,-28 Q4,-45 3,-62"/>
+        </g>
+        <!-- Left sleeve -->
+        <path d="M-14,-88 Q-30,-84 -38,-78 Q-42,-74 -38,-72 Q-28,-76 -16,-82" fill="url(#m3robe)"/>
+        <!-- Right sleeve -->
+        <path d="M10,-88 Q30,-84 38,-90 Q42,-94 36,-96 Q24,-94 12,-92" fill="url(#m3robe)"/>
+        <!-- Hands clasped -->
+        <ellipse cx="-2" cy="-80" rx="9" ry="5" fill="var(--skin)"/>
+        <path d="M4,-82 Q-2,-76 -8,-82" stroke="var(--skin-shade)" stroke-width="0.5" fill="none"/>
+        <!-- Neck -->
+        <rect x="-6" y="-106" width="10" height="14" rx="4" fill="var(--skin)"/>
+        <!-- Head -->
+        <ellipse cx="-2" cy="-122" rx="18" ry="20" fill="var(--skin)"/>
+        <!-- Face (looking left toward ZL) -->
+        <ellipse cx="-8" cy="-123" rx="2.8" ry="2" fill="#2d3748"/>
+        <circle cx="-8.8" cy="-123.5" r="0.9" fill="white" opacity="0.7"/>
+        <ellipse cx="4" cy="-123" rx="2.8" ry="2" fill="#2d3748"/>
+        <circle cx="3.2" cy="-123.5" r="0.9" fill="white" opacity="0.7"/>
+        <!-- Eyebrows -->
+        <path d="M8,-128 Q4,-131 1,-128" stroke="#4a3a2a" stroke-width="1.1" fill="none"/>
+        <path d="M-5,-128 Q-8,-131 -12,-128" stroke="#4a3a2a" stroke-width="1.1" fill="none"/>
+        <!-- Nose -->
+        <path d="M-2,-120 Q-3,-116 -2,-114" stroke="var(--skin-shade)" stroke-width="0.6" fill="none"/>
+        <!-- Mouth (slightly open) -->
+        <ellipse cx="-3" cy="-109" rx="3.5" ry="2" fill="#c47858"/>
+        <path d="M0,-109 Q-3,-107 -6,-109" stroke="#a05838" stroke-width="0.4" fill="none"/>
+        <!-- Small mustache -->
+        <path d="M-6,-108 Q-8,-105 -10,-104" stroke="#777" stroke-width="0.8" fill="none"/>
+        <path d="M0,-108 Q2,-105 4,-104" stroke="#777" stroke-width="0.8" fill="none"/>
+        <!-- Hat -->
+        <ellipse cx="-2" cy="-140" rx="13" ry="6" fill="#2a2a2a"/>
+        <rect x="-12" y="-144" width="20" height="5" rx="2" fill="#333"/>
+        <circle cx="-2" cy="-144" r="1.8" fill="#8a6a3a"/>
+        <!-- Hat ribbon -->
+        <path d="M11,-138 Q16,-130 14,-120" stroke="#333" stroke-width="1.2" fill="none"/>
+        <path d="M-15,-138 Q-20,-130 -18,-120" stroke="#333" stroke-width="1.2" fill="none"/>
       </g>
 
-      <!-- ─── Zhuge Liang (center) ─── -->
-      <g transform="translate(480,388)">
+      <!-- ─── Minister 4 (far right, brown, kneeling deep bow, facing left) ─── -->
+      <g transform="translate(800,418)">
+        <ellipse cx="-5" cy="2" rx="42" ry="7" fill="rgba(0,0,0,0.06)"/>
+        <!-- Lower robe pooling -->
+        <path d="M30,-2 Q34,-8 28,-16 Q20,-28 0,-36 Q-14,-30 -22,-20 Q-30,-8 -34,-2 Z" fill="url(#m4robe)"/>
+        <path d="M34,-2 Q36,2 32,5 L-36,5 Q-38,2 -34,-2" fill="#5a4020"/>
+        <!-- Fold lines -->
+        <g stroke="#4a3020" stroke-width="0.6" fill="none" opacity="0.3">
+          <path d="M15,-6 Q10,-18 -5,-28"/>
+          <path d="M-10,-4 Q-12,-15 -18,-22"/>
+        </g>
+        <!-- Upper body bent forward -->
+        <path d="M0,-36 Q-15,-42 -28,-38 Q-35,-34 -32,-28" fill="url(#m4robe)"/>
+        <!-- Arms forward -->
+        <path d="M-28,-32 Q-38,-30 -46,-25" stroke="var(--skin)" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <ellipse cx="-48" cy="-23" rx="5.5" ry="4" fill="var(--skin)" transform="rotate(10,-48,-23)"/>
+        <!-- Head (slightly raised, facing left) -->
+        <ellipse cx="-36" cy="-44" rx="15" ry="17" fill="var(--skin)"/>
+        <!-- Face -->
+        <ellipse cx="-42" cy="-45" rx="2.2" ry="1.6" fill="#2d3748"/>
+        <circle cx="-42.5" cy="-45.5" r="0.7" fill="white" opacity="0.7"/>
+        <path d="M-45,-49 Q-42,-51 -39,-49" stroke="#4a3a2a" stroke-width="0.9" fill="none"/>
+        <path d="M-43,-42 Q-44,-40 -43,-39" stroke="var(--skin-shade)" stroke-width="0.5" fill="none"/>
+        <path d="M-45,-36 Q-43,-35 -41,-36" stroke="#a06848" stroke-width="0.8" fill="none"/>
+        <!-- Longer beard -->
+        <path d="M-43,-35 Q-45,-26 -42,-20" stroke="#999" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M-40,-35 Q-41,-25 -39,-18" stroke="#999" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Hat -->
+        <ellipse cx="-36" cy="-58" rx="11" ry="5.5" fill="#3a3530"/>
+        <rect x="-44" y="-62" width="16" height="4" rx="2" fill="#444038"/>
+        <circle cx="-36" cy="-62" r="1.5" fill="#8a6a3a"/>
+      </g>
+
+      <!-- ─── Zhuge Liang (center, standing on platform) ─── -->
+      <g transform="translate(480,406)">
         <!-- Shadow -->
-        <ellipse cx="0" cy="0" rx="50" ry="8" fill="rgba(0,0,0,0.08)"/>
+        <ellipse cx="0" cy="2" rx="52" ry="9" fill="rgba(0,0,0,0.1)"/>
 
         <!-- Feet -->
-        <rect x="-14" y="-12" width="11" height="8" rx="3" fill="#2c2c2c"/>
-        <rect x="3" y="-12" width="11" height="8" rx="3" fill="#2c2c2c"/>
+        <rect x="-14" y="-8" width="12" height="6" rx="3" fill="#2c2c2c"/>
+        <rect x="2" y="-8" width="12" height="6" rx="3" fill="#2c2c2c"/>
 
-        <!-- Robe -->
-        <path d="M-55,-12 Q-60,-90 -32,-175 L32,-175 Q60,-90 55,-12Z" fill="url(#zl-robe)"/>
-        <!-- Robe inner white -->
-        <path d="M-10,-175 L-4,-12 L4,-12 L10,-175Z" fill="#f0e6d3"/>
-        <!-- Gold belt -->
-        <rect x="-35" y="-148" width="70" height="7" rx="3.5" fill="#c9a74a"/>
-        <circle cx="0" cy="-144.5" r="4" fill="#dbb85a"/>
+        <!-- Outer robe (main garment) -->
+        <path d="M-58,-8 C-62,-60 -50,-140 -38,-188 L-24,-200 L24,-200 Q50,-140 62,-60 L58,-8 Q30,0 0,2 Q-30,0 -58,-8 Z" fill="url(#zl-robe)"/>
 
-        <!-- Left sleeve (fan side) -->
-        <path d="M-32,-168 Q-72,-155 -85,-168 Q-78,-176 -60,-172 Q-38,-175 -32,-168" fill="url(#zl-robe)"/>
+        <!-- Robe fold lines -->
+        <g stroke="#1e4a6a" stroke-width="0.7" fill="none" opacity="0.3">
+          <path d="M-35,-20 Q-38,-80 -34,-150"/>
+          <path d="M-18,-14 Q-20,-80 -18,-160"/>
+          <path d="M18,-14 Q20,-80 18,-160"/>
+          <path d="M35,-20 Q38,-80 34,-150"/>
+          <path d="M-8,-10 Q-6,-80 -5,-150"/>
+          <path d="M8,-10 Q6,-80 5,-150"/>
+        </g>
+
+        <!-- Robe hem detail -->
+        <path d="M-58,-8 Q-50,-14 -30,-16 Q0,-18 30,-16 Q50,-14 58,-8 Q50,-4 30,-2 Q0,0 -30,-2 Q-50,-4 -58,-8" fill="url(#zl-robe2)" opacity="0.5"/>
+
+        <!-- Inner robe V-neckline -->
+        <path d="M-12,-200 L-2,-152 L0,-148 L2,-152 L12,-200" fill="#f0e6d3" stroke="#e0d6c3" stroke-width="0.5"/>
+        <!-- Inner collar edges -->
+        <path d="M-14,-198 L-12,-200" stroke="#ddd2be" stroke-width="1"/>
+        <path d="M14,-198 L12,-200" stroke="#ddd2be" stroke-width="1"/>
+
+        <!-- Gold belt/sash -->
+        <rect x="-38" y="-158" width="76" height="8" rx="4" fill="#c9a74a"/>
+        <circle cx="0" cy="-154" r="5" fill="#dbb85a"/>
+        <circle cx="0" cy="-154" r="3" fill="#c9a74a"/>
+        <!-- Belt side tassels -->
+        <path d="M-38,-154 Q-44,-150 -42,-138" stroke="#c9a74a" stroke-width="1.5" fill="none"/>
+        <circle cx="-42" cy="-138" r="2" fill="#dbb85a"/>
+
+        <!-- Left sleeve (fan side) - flowing, wider -->
+        <path d="M-24,-195 Q-55,-188 -78,-195 Q-92,-200 -98,-210 Q-94,-216 -84,-212 Q-62,-204 -36,-200" fill="url(#zl-robe)"/>
+        <!-- Sleeve fold -->
+        <path d="M-50,-196 Q-65,-198 -80,-205" stroke="#1e4a6a" stroke-width="0.5" fill="none" opacity="0.3"/>
+
         <!-- Right sleeve -->
-        <path d="M32,-168 Q68,-155 78,-140 Q72,-135 62,-148 Q42,-165 32,-168" fill="url(#zl-robe)"/>
-        <!-- Right hand -->
-        <ellipse cx="76" cy="-142" rx="6" ry="4.5" fill="#e8c9a0" transform="rotate(-20,76,-142)"/>
+        <path d="M24,-195 Q52,-188 72,-178 Q86,-170 90,-160 Q86,-155 78,-162 Q60,-178 36,-192" fill="url(#zl-robe)"/>
+        <!-- Sleeve fold -->
+        <path d="M50,-186 Q65,-176 78,-166" stroke="#1e4a6a" stroke-width="0.5" fill="none" opacity="0.3"/>
 
-        <!-- Fan -->
-        <g transform="translate(-88,-200) rotate(-8)">
-          <line x1="0" y1="22" x2="0" y2="42" stroke="#c9a74a" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="0" cy="22" r="3" fill="#c9a74a"/>
-          <path d="M0,20 Q-22,-12 -18,-38 Q-10,-22 0,16Z" fill="#f0e6d3" stroke="#ddd2be" stroke-width="0.5"/>
-          <path d="M0,20 Q-12,-18 -8,-42 Q-2,-24 0,16Z" fill="#f0e6d3" stroke="#ddd2be" stroke-width="0.5"/>
-          <path d="M0,20 Q0,-22 0,-45 Q6,-24 0,16Z" fill="#f5efe4" stroke="#ddd2be" stroke-width="0.5"/>
-          <path d="M0,20 Q12,-18 8,-42 Q2,-24 0,16Z" fill="#f0e6d3" stroke="#ddd2be" stroke-width="0.5"/>
-          <path d="M0,20 Q22,-12 18,-38 Q10,-22 0,16Z" fill="#f0e6d3" stroke="#ddd2be" stroke-width="0.5"/>
-          <g stroke="#c9a74a" stroke-width="0.5" opacity="0.4">
-            <line x1="0" y1="18" x2="-16" y2="-34"/>
-            <line x1="0" y1="18" x2="-6" y2="-40"/>
-            <line x1="0" y1="18" x2="0" y2="-43"/>
-            <line x1="0" y1="18" x2="6" y2="-40"/>
-            <line x1="0" y1="18" x2="16" y2="-34"/>
+        <!-- Right hand (gesture) -->
+        <g transform="translate(88,-162)">
+          <ellipse cx="0" cy="0" rx="7" ry="5.5" fill="var(--skin)" transform="rotate(-20)"/>
+          <!-- Fingers slightly spread -->
+          <path d="M4,-3 Q8,-6 9,-4" stroke="var(--skin)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M5,-1 Q10,-2 10,0" stroke="var(--skin)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- Fan (held in left hand) -->
+        <g transform="translate(-102,-240) rotate(-12)">
+          <!-- Handle -->
+          <line x1="0" y1="24" x2="0" y2="50" stroke="#c9a74a" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="0" cy="24" r="3.5" fill="#c9a74a"/>
+          <circle cx="0" cy="50" r="2" fill="#dbb85a"/>
+          <!-- Fan feathers -->
+          <path d="M0,22 Q-28,-18 -24,-54 Q-14,-34 0,18Z" fill="#f0e6d3" stroke="#ddd2be" stroke-width="0.5"/>
+          <path d="M0,22 Q-16,-25 -12,-58 Q-5,-36 0,18Z" fill="#f5efe4" stroke="#ddd2be" stroke-width="0.5"/>
+          <path d="M0,22 Q0,-30 0,-62 Q7,-36 0,18Z" fill="#faf8f0" stroke="#ddd2be" stroke-width="0.5"/>
+          <path d="M0,22 Q16,-25 12,-58 Q5,-36 0,18Z" fill="#f5efe4" stroke="#ddd2be" stroke-width="0.5"/>
+          <path d="M0,22 Q28,-18 24,-54 Q14,-34 0,18Z" fill="#f0e6d3" stroke="#ddd2be" stroke-width="0.5"/>
+          <!-- Ribs -->
+          <g stroke="#c9a74a" stroke-width="0.5" opacity="0.35">
+            <line x1="0" y1="20" x2="-22" y2="-50"/><line x1="0" y1="20" x2="-10" y2="-56"/>
+            <line x1="0" y1="20" x2="0" y2="-60"/>
+            <line x1="0" y1="20" x2="10" y2="-56"/><line x1="0" y1="20" x2="22" y2="-50"/>
           </g>
         </g>
         <!-- Left hand holding fan -->
-        <ellipse cx="-86" cy="-174" rx="6" ry="4.5" fill="#e8c9a0" transform="rotate(10,-86,-174)"/>
+        <ellipse cx="-100" cy="-212" rx="7" ry="5" fill="var(--skin)" transform="rotate(12,-100,-212)"/>
 
         <!-- Neck -->
-        <rect x="-5.5" y="-195" width="11" height="20" rx="5" fill="#e8c9a0"/>
+        <rect x="-6" y="-225" width="12" height="22" rx="5.5" fill="var(--skin)"/>
 
         <!-- Head -->
-        <ellipse cx="0" cy="-216" rx="22" ry="26" fill="#e8c9a0"/>
+        <ellipse cx="0" cy="-250" rx="24" ry="28" fill="var(--skin)"/>
+
+        <!-- Ears -->
+        <ellipse cx="-22" cy="-248" rx="5" ry="8" fill="var(--skin)"/>
+        <ellipse cx="-22" cy="-248" rx="3" ry="5" fill="var(--skin-shade)" opacity="0.3"/>
+        <ellipse cx="22" cy="-248" rx="5" ry="8" fill="var(--skin)"/>
+        <ellipse cx="22" cy="-248" rx="3" ry="5" fill="var(--skin-shade)" opacity="0.3"/>
 
         <!-- Eyes -->
-        <ellipse cx="-8" cy="-220" rx="3" ry="2.2" fill="#2d3748"/>
-        <ellipse cx="8" cy="-220" rx="3" ry="2.2" fill="#2d3748"/>
-        <circle cx="-7" cy="-220.5" r="1" fill="white"/>
-        <circle cx="9" cy="-220.5" r="1" fill="white"/>
-        <!-- Eyebrows -->
-        <path d="M-13,-226 Q-8,-229 -4,-226" stroke="#5a4a3a" stroke-width="1.3" fill="none"/>
-        <path d="M4,-226 Q8,-229 13,-226" stroke="#5a4a3a" stroke-width="1.3" fill="none"/>
+        <g>
+          <ellipse cx="-9" cy="-253" rx="3.8" ry="2.8" fill="#2d3748"/>
+          <circle cx="-8" cy="-253.5" r="1.3" fill="white" opacity="0.8"/>
+          <ellipse cx="9" cy="-253" rx="3.8" ry="2.8" fill="#2d3748"/>
+          <circle cx="10" cy="-253.5" r="1.3" fill="white" opacity="0.8"/>
+        </g>
+        <!-- Eyelids -->
+        <path d="M-14,-254 Q-9,-258 -5,-254" stroke="var(--skin-shade)" stroke-width="0.6" fill="none"/>
+        <path d="M5,-254 Q9,-258 14,-254" stroke="var(--skin-shade)" stroke-width="0.6" fill="none"/>
+        <!-- Eyebrows (long, elegant) -->
+        <path d="M-16,-260 Q-9,-264 -3,-260" stroke="#4a3a2a" stroke-width="1.6" fill="none"/>
+        <path d="M3,-260 Q9,-264 16,-260" stroke="#4a3a2a" stroke-width="1.6" fill="none"/>
         <!-- Nose -->
-        <path d="M0,-216 L0.5,-211" stroke="#d4a574" stroke-width="0.8" fill="none"/>
-        <!-- Smile -->
-        <path d="M-5,-206 Q0,-203 5,-206" stroke="#b87a5a" stroke-width="1" fill="none"/>
+        <path d="M0,-250 Q1,-244 0,-240" stroke="var(--skin-shade)" stroke-width="0.8" fill="none"/>
+        <path d="M-2,-240 Q0,-238 2,-240" stroke="var(--skin-shade)" stroke-width="0.6" fill="none"/>
+        <!-- Serene smile -->
+        <path d="M-6,-234 Q0,-230 6,-234" stroke="#a06848" stroke-width="1.2" fill="none"/>
+        <!-- Smile lines -->
+        <path d="M-8,-234 Q-9,-232 -8,-230" stroke="var(--skin-shade)" stroke-width="0.4" fill="none" opacity="0.4"/>
+        <path d="M8,-234 Q9,-232 8,-230" stroke="var(--skin-shade)" stroke-width="0.4" fill="none" opacity="0.4"/>
 
-        <!-- Beard -->
-        <g stroke="#9ca3af" fill="none" stroke-linecap="round">
-          <path d="M-10,-203 Q-14,-178 -7,-155" stroke-width="2.2"/>
-          <path d="M-4,-205 Q-2,-175 0,-150" stroke-width="2.2"/>
-          <path d="M4,-205 Q2,-175 0,-150" stroke-width="1.8"/>
-          <path d="M10,-203 Q14,-178 7,-155" stroke-width="2.2"/>
+        <!-- Beard (long, flowing) -->
+        <g fill="none" stroke-linecap="round">
+          <path d="M-12,-232 Q-18,-205 -14,-175 Q-12,-160 -8,-148" stroke="#8a8a90" stroke-width="2.8"/>
+          <path d="M-6,-234 Q-5,-200 -2,-170 Q0,-155 0,-145" stroke="#8a8a90" stroke-width="2.8"/>
+          <path d="M6,-234 Q5,-200 2,-170 Q0,-155 0,-145" stroke="#8a8a90" stroke-width="2.2"/>
+          <path d="M12,-232 Q18,-205 14,-175 Q12,-160 8,-148" stroke="#8a8a90" stroke-width="2.8"/>
+          <!-- Wispy ends -->
+          <path d="M-9,-150 Q-10,-142 -12,-138" stroke="#8a8a90" stroke-width="1.5" opacity="0.5"/>
+          <path d="M9,-150 Q10,-142 12,-138" stroke="#8a8a90" stroke-width="1.5" opacity="0.5"/>
         </g>
 
-        <!-- Hat -->
-        <path d="M-18,-230 L-22,-244 L-8,-278 L0,-290 L8,-278 L22,-244 L18,-230" fill="url(#zl-hat)"/>
-        <path d="M-24,-230 L24,-230 L22,-222 L-22,-222Z" fill="#1e3a5e"/>
-        <!-- Hat detail line -->
-        <line x1="-18" y1="-226" x2="18" y2="-226" stroke="#4a7a9a" stroke-width="0.8" opacity="0.4"/>
-        <!-- Hat ribbons -->
-        <path d="M-22,-226 Q-30,-218 -28,-200" stroke="#2c4a6e" stroke-width="1.8" fill="none"/>
-        <path d="M22,-226 Q30,-218 28,-200" stroke="#2c4a6e" stroke-width="1.8" fill="none"/>
+        <!-- Hat (诸葛巾 - Zhuge headcloth, tall and distinctive) -->
+        <path d="M-20,-268 L-24,-284 Q-20,-306 -10,-318 L0,-324 L10,-318 Q20,-306 24,-284 L20,-268" fill="url(#zl-hat)"/>
+        <!-- Hat base band -->
+        <path d="M-26,-268 L26,-268 L24,-260 L-24,-260Z" fill="#1e3a5e"/>
+        <!-- Hat front panel -->
+        <line x1="-18" y1="-264" x2="18" y2="-264" stroke="#4a7a9a" stroke-width="0.8" opacity="0.4"/>
+        <!-- Hat vertical center line -->
+        <line x1="0" y1="-268" x2="0" y2="-320" stroke="#4a7a9a" stroke-width="0.5" opacity="0.2"/>
+        <!-- Hat ribbons flowing down -->
+        <path d="M-24,-264 Q-34,-252 -32,-235 Q-30,-220 -28,-210" stroke="#2c4a6e" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M24,-264 Q34,-252 32,-235 Q30,-220 28,-210" stroke="#2c4a6e" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Ribbon ends -->
+        <path d="M-28,-210 Q-27,-204 -30,-200" stroke="#2c4a6e" stroke-width="1.2" fill="none"/>
+        <path d="M28,-210 Q27,-204 30,-200" stroke="#2c4a6e" stroke-width="1.2" fill="none"/>
       </g>
     </svg>
 
-    <!-- Speech bubble (HTML overlay) -->
-    <div class="speech-bubble">
-      <p class="bubble-text" id="quoteText"></p>
-      <span class="bubble-attr">— 제갈량</span>
+    <!-- ── Speech Bubbles (HTML overlays) ── -->
+    <div class="zl-bubble">
+      <p class="b-text" id="quoteText"></p>
+      <span class="b-attr">— 제갈량</span>
+    </div>
+
+    <div class="m-bubble m1">
+      <span id="m1Text"></span>
+      <span class="m-name">장수 1</span>
+    </div>
+    <div class="m-bubble m2">
+      <span id="m2Text"></span>
+      <span class="m-name">참모 1</span>
+    </div>
+    <div class="m-bubble m3">
+      <span id="m3Text"></span>
+      <span class="m-name">참모 2</span>
+    </div>
+    <div class="m-bubble m4">
+      <span id="m4Text"></span>
+      <span class="m-name">원로대신</span>
     </div>
   </div>
 </div>
@@ -480,6 +769,7 @@
   document.getElementById('heroDate').textContent=ds;
   document.getElementById('closingDate').textContent=ds+' 臥龍 諸葛亮 拜上';
 
+  // Zhuge Liang daily quotes
   var q=[
     '마음이 고요해야 멀리 볼 수 있어요. 조급해하지 마세요.',
     '큰일은 작은 일을 잘하는 데서 시작돼요.',
@@ -513,7 +803,42 @@
     '오늘 하루도 최선을 다했으면 그걸로 충분해요.',
     '천하의 큰일은 작고 꼼꼼한 데서 시작돼요.'
   ];
+
+  // Minister dialogue (rotates daily)
+  var m1=[
+    '네! 명심하겠습니다!','승상님 말씀에 감동입니다!','오늘도 열심히 하겠습니다!',
+    '끝까지 따르겠습니다!','꼭 실천하겠습니다!','잊지 않겠습니다!',
+    '저도 그렇게 하겠습니다!','가슴에 새기겠습니다!','반드시 지키겠습니다!',
+    '힘내겠습니다, 승상님!','감사합니다, 승상님!','큰 가르침입니다!',
+    '다짐 또 다짐합니다!','정말 맞는 말씀이에요!','알겠습니다, 승상님!'
+  ];
+  var m2=[
+    '깊은 말씀이십니다...','오늘도 배움이 있습니다','정말 그렇습니다, 승상님',
+    '마음에 새기겠습니다','좋은 가르침이십니다','마음에 와닿습니다',
+    '참으로 옳으신 말씀...','제 부족함을 느낍니다','곰곰이 생각해보겠습니다',
+    '뜻깊은 말씀이시네요','지혜로운 말씀입니다','겸허히 받아들이겠습니다',
+    '묵직한 가르침입니다','가만히 되새겨봅니다','진심으로 공감합니다'
+  ];
+  var m3=[
+    '와, 정말 그렇네요!','저도 해볼래요!','역시 승상님이세요!',
+    '대단하십니다!','저도 열심히 할게요!','오늘 바로 시작할래요!',
+    '멋진 말씀이에요!','완전 공감이에요!','저도 그 생각이었어요!',
+    '진짜 최고예요, 승상님!','아, 그렇구나!','빨리 해보고 싶어요!',
+    '너무 좋은 말씀이에요!','오늘의 최고 조언이에요!','힘이 나는 말씀이에요!'
+  ];
+  var m4=[
+    '허허, 지당하신 말씀이오','노신도 동감하오이다','세월이 증명하는 진리요',
+    '깊이 공감하오','경험에서 우러나온 지혜...','참으로 그러하오',
+    '오래 살아도 배움이 있소','명심하고 또 명심하리다','역시 승상의 혜안이오',
+    '후학들이 새겨야 할 말씀','오늘도 가르침을 받소이다','이 노인도 고개를 숙이오',
+    '젊은이들이 들어야 할 말씀','한 수 배우겠소이다','참된 지혜의 말씀이오'
+  ];
+
   var day=Math.floor((d-new Date(y,0,0))/864e5);
   document.getElementById('quoteText').textContent=q[day%q.length];
+  document.getElementById('m1Text').textContent=m1[day%m1.length];
+  document.getElementById('m2Text').textContent=m2[day%m2.length];
+  document.getElementById('m3Text').textContent=m3[day%m3.length];
+  document.getElementById('m4Text').textContent=m4[day%m4.length];
 })();
 </script>
