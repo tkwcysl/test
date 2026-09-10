@@ -35,6 +35,9 @@
     --mbubble-border: #e0d8ca;
     --skin: #e8c9a0;
     --skin-shade: #d4a574;
+    --modal-bg: #f8f4ec;
+    --modal-border: #d8d0c0;
+    --overlay: rgba(20,18,15,0.55);
   }
 
   @media(prefers-color-scheme:dark){
@@ -50,6 +53,7 @@
       --bubble-bg:#1c1b18;--bubble-border:#302c26;
       --mbubble-bg:#1a1918;--mbubble-border:#2a2826;
       --skin:#c8a880;--skin-shade:#a88060;
+      --modal-bg:#201f1c;--modal-border:#333028;--overlay:rgba(0,0,0,0.65);
     }
   }
   :root[data-theme="dark"]{
@@ -64,16 +68,16 @@
     --bubble-bg:#1c1b18;--bubble-border:#302c26;
     --mbubble-bg:#1a1918;--mbubble-border:#2a2826;
     --skin:#c8a880;--skin-shade:#a88060;
+    --modal-bg:#201f1c;--modal-border:#333028;--overlay:rgba(0,0,0,0.65);
   }
 
-  body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;line-height:1.8;min-height:100vh}
+  body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;line-height:1.8;min-height:100vh;padding-block:0}
 
   /* ── Scene ── */
   .scene-wrap{background:var(--bg);overflow:hidden}
   .scene{position:relative;max-width:960px;margin:0 auto}
   .scene-svg{width:100%;height:auto;display:block}
 
-  /* ── ZL main bubble ── */
   .zl-bubble{
     position:absolute;top:1%;left:50%;transform:translateX(-50%);
     background:var(--bubble-bg);border:1.5px solid var(--bubble-border);
@@ -96,7 +100,6 @@
     font-weight:300;font-size:11px;color:var(--text-faint);letter-spacing:1px;
   }
 
-  /* ── Minister bubbles ── */
   .m-bubble{
     position:absolute;
     background:var(--mbubble-bg);border:1px solid var(--mbubble-border);
@@ -165,6 +168,59 @@
   .closing-date{font-weight:300;font-size:12px;color:var(--text-faint);letter-spacing:2px}
   .closing-note{font-weight:300;font-size:11px;color:var(--text-faint);margin-top:40px;padding-top:20px;border-top:1px solid var(--rule-faint);line-height:1.7;opacity:0.7}
 
+  /* ── Topic button + Modal ── */
+  .topic-btn{
+    position:fixed;bottom:28px;right:28px;z-index:100;
+    background:var(--gold);color:#fff;border:none;border-radius:50px;
+    padding:14px 24px;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:14px;
+    cursor:pointer;box-shadow:0 4px 16px var(--shadow-md);
+    transition:transform 0.15s,box-shadow 0.15s;
+  }
+  .topic-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px var(--shadow-md)}
+  .topic-btn:active{transform:translateY(0)}
+
+  .modal-overlay{
+    position:fixed;inset:0;z-index:200;background:var(--overlay);
+    display:flex;align-items:center;justify-content:center;padding:20px;
+  }
+  .modal{
+    background:var(--modal-bg);border:1px solid var(--modal-border);
+    border-radius:16px;padding:32px;max-width:520px;width:100%;
+    box-shadow:0 20px 60px var(--shadow-md);
+  }
+  .modal h3{
+    font-family:'Noto Serif KR',serif;font-weight:700;font-size:20px;
+    color:var(--text-heading);margin:0 0 8px;
+  }
+  .modal .modal-desc{font-size:14px;color:var(--text-dim);margin:0 0 20px}
+  .modal textarea{
+    width:100%;min-height:120px;padding:14px 16px;border:1px solid var(--modal-border);
+    border-radius:10px;background:var(--bg);color:var(--text);
+    font-family:'Noto Sans KR',sans-serif;font-size:15px;line-height:1.7;
+    resize:vertical;box-sizing:border-box;
+  }
+  .modal textarea:focus{outline:2px solid var(--gold);outline-offset:-1px;border-color:var(--gold)}
+  .modal-actions{display:flex;gap:12px;margin-top:20px;justify-content:flex-end}
+  .modal-actions button{
+    padding:10px 24px;border-radius:10px;font-family:'Noto Sans KR',sans-serif;
+    font-size:14px;font-weight:500;cursor:pointer;border:none;
+  }
+  .btn-gen{background:var(--gold);color:#fff}
+  .btn-gen:hover{background:var(--gold-hi)}
+  .btn-gen:disabled{opacity:0.5;cursor:not-allowed}
+  .btn-cancel{background:var(--bg-alt);color:var(--text-dim);border:1px solid var(--modal-border) !important}
+  .btn-cancel:hover{background:var(--rule-faint)}
+  .gen-status{margin-top:20px;padding:16px;background:var(--bg-alt);border-radius:10px}
+  .gen-status p{margin:0;font-size:13px;color:var(--text-dim);line-height:1.6}
+  .gen-bar{height:3px;background:var(--rule);border-radius:2px;margin-bottom:10px;overflow:hidden}
+  .gen-bar-fill{height:100%;background:var(--gold);border-radius:2px;animation:genpulse 1.8s ease-in-out infinite;width:40%}
+  @keyframes genpulse{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+  .topic-badge{
+    display:inline-block;background:var(--bg-alt);border:1px solid var(--rule-faint);
+    border-radius:20px;padding:4px 14px;font-size:12px;color:var(--text-dim);
+    margin-top:8px;
+  }
+
   @media(max-width:640px){
     .title-area h1{font-size:36px;letter-spacing:6px}
     .zl-bubble{max-width:260px;padding:12px 16px 10px;top:0}
@@ -177,9 +233,11 @@
     .point{padding:16px 18px}
     .point-title{font-size:16px}
     .point p,.opening p,.section-intro,.closing-text{font-size:15px}
+    .topic-btn{bottom:16px;right:16px;padding:12px 20px;font-size:13px}
+    .modal{padding:24px}
   }
 
-  @media(prefers-reduced-motion:reduce){.cloud-drift,.fog-drift{animation:none !important}}
+  @media(prefers-reduced-motion:reduce){.cloud-drift,.fog-drift,.gen-bar-fill{animation:none !important}}
   .cloud-drift{animation:cdrift 28s ease-in-out infinite}
   .cloud-drift:nth-child(2){animation-delay:-12s;animation-duration:34s}
   @keyframes cdrift{0%,100%{transform:translateX(0)}50%{transform:translateX(20px)}}
@@ -223,11 +281,9 @@
         </radialGradient>
       </defs>
 
-      <!-- Sky -->
       <rect width="960" height="560" fill="url(#sky)"/>
       <rect width="960" height="400" fill="url(#sun-glow)"/>
 
-      <!-- Clouds -->
       <g class="cloud-drift" fill="var(--cloud)">
         <ellipse cx="140" cy="70" rx="60" ry="20"/><ellipse cx="168" cy="58" rx="45" ry="16"/><ellipse cx="112" cy="62" rx="38" ry="14"/>
       </g>
@@ -238,389 +294,237 @@
         <ellipse cx="460" cy="35" rx="42" ry="12"/><ellipse cx="485" cy="28" rx="30" ry="10"/>
       </g>
 
-      <!-- Mountains far -->
       <path d="M0,310 C50,295 100,258 180,235 C260,212 320,245 400,240 C480,235 530,195 640,175 C720,162 790,195 870,185 C920,180 950,205 960,215 L960,560 L0,560Z" fill="var(--mtn-far)"/>
-
-      <!-- Pine trees on far ridge -->
       <g fill="var(--mtn-mid)" opacity="0.5">
         <g transform="translate(640,170)"><polygon points="-5,3 0,-9 5,3"/><polygon points="-4,8 0,-1 4,8"/><rect x="-0.8" y="8" width="1.6" height="6"/></g>
         <g transform="translate(652,176)"><polygon points="-3.5,2 0,-6 3.5,2"/><polygon points="-3,6 0,0 3,6"/><rect x="-0.5" y="6" width="1" height="5"/></g>
         <g transform="translate(875,180)"><polygon points="-4,2.5 0,-7 4,2.5"/><polygon points="-3.5,7 0,-0.5 3.5,7"/><rect x="-0.6" y="7" width="1.2" height="5"/></g>
         <g transform="translate(185,230)"><polygon points="-4,3 0,-8 4,3"/><polygon points="-3,7 0,0 3,7"/><rect x="-0.6" y="7" width="1.2" height="5"/></g>
       </g>
-
-      <!-- Cranes -->
       <g stroke="var(--mtn-far)" fill="none" stroke-width="1.2" opacity="0.18">
         <path d="M340,105 Q347,98 354,105"/><path d="M354,105 Q361,98 368,105"/>
         <path d="M385,118 Q390,113 395,118"/><path d="M395,118 Q400,113 405,118"/>
         <path d="M375,128 Q378,125 381,128"/><path d="M381,128 Q384,125 387,128"/>
       </g>
-
-      <!-- Mountains mid -->
       <path d="M0,370 C80,345 160,315 260,305 C360,295 420,325 520,315 C620,305 700,275 820,278 C900,280 950,305 960,315 L960,560 L0,560Z" fill="var(--mtn-mid)"/>
-
-      <!-- Mountains near -->
       <path d="M0,400 C100,385 200,370 320,365 C440,360 520,378 640,373 C760,368 870,380 960,388 L960,560 L0,560Z" fill="var(--mtn-near)"/>
-
-      <!-- Fog layer -->
       <g class="fog-drift">
         <ellipse cx="200" cy="385" rx="180" ry="18" fill="var(--fog)"/>
         <ellipse cx="700" cy="378" rx="160" ry="15" fill="var(--fog)"/>
       </g>
-
-      <!-- Ground / courtyard -->
       <rect x="0" y="418" width="960" height="142" fill="var(--court)"/>
       <line x1="0" y1="418" x2="960" y2="418" stroke="var(--court-line)" stroke-width="1.5"/>
-      <!-- Courtyard tile lines -->
       <g stroke="var(--court-line)" stroke-width="0.4" opacity="0.3">
         <line x1="0" y1="450" x2="960" y2="450"/>
         <line x1="0" y1="490" x2="960" y2="490"/>
         <line x1="0" y1="530" x2="960" y2="530"/>
       </g>
-
-      <!-- Platform (3-tier stone steps) -->
       <rect x="350" y="392" width="260" height="10" rx="4" fill="var(--stone-hi)"/>
       <rect x="362" y="400" width="236" height="8" rx="3" fill="var(--stone)"/>
       <rect x="374" y="406" width="212" height="14" rx="2" fill="var(--stone)"/>
       <line x1="374" y1="413" x2="586" y2="413" stroke="var(--court-line)" stroke-width="0.5" opacity="0.5"/>
 
-      <!-- ─── Minister 1 (far left, red, kneeling deep bow, facing right) ─── -->
+      <!-- Minister 1 -->
       <g transform="translate(160,418)">
         <ellipse cx="5" cy="2" rx="42" ry="7" fill="rgba(0,0,0,0.06)"/>
-        <!-- Lower robe pooling on ground -->
         <path d="M-30,-2 Q-34,-8 -28,-16 Q-20,-28 0,-36 Q14,-30 22,-20 Q30,-8 34,-2 Z" fill="url(#m1robe)"/>
         <path d="M-34,-2 Q-36,2 -32,5 L36,5 Q38,2 34,-2" fill="#6a2828"/>
-        <!-- Robe fold lines -->
-        <g stroke="#5a2020" stroke-width="0.6" fill="none" opacity="0.3">
-          <path d="M-15,-6 Q-10,-18 5,-28"/>
-          <path d="M10,-4 Q12,-15 18,-22"/>
-        </g>
-        <!-- Upper body bent forward -->
+        <g stroke="#5a2020" stroke-width="0.6" fill="none" opacity="0.3"><path d="M-15,-6 Q-10,-18 5,-28"/><path d="M10,-4 Q12,-15 18,-22"/></g>
         <path d="M0,-36 Q15,-42 28,-38 Q35,-34 32,-28" fill="url(#m1robe)"/>
-        <!-- Arms extending forward -->
         <path d="M28,-32 Q38,-30 46,-25" stroke="var(--skin)" stroke-width="7" fill="none" stroke-linecap="round"/>
         <ellipse cx="48" cy="-23" rx="5.5" ry="4" fill="var(--skin)" transform="rotate(-10,48,-23)"/>
-        <!-- Head (slightly raised, facing right) -->
         <ellipse cx="36" cy="-44" rx="15" ry="17" fill="var(--skin)"/>
-        <!-- Face details -->
         <ellipse cx="42" cy="-45" rx="2.2" ry="1.6" fill="#2d3748"/>
         <circle cx="42.5" cy="-45.5" r="0.7" fill="white" opacity="0.7"/>
         <path d="M39,-49 Q42,-51 45,-49" stroke="#4a3a2a" stroke-width="0.9" fill="none"/>
         <path d="M43,-42 Q44,-40 43,-39" stroke="var(--skin-shade)" stroke-width="0.5" fill="none"/>
         <path d="M41,-36 Q43,-35 45,-36" stroke="#a06848" stroke-width="0.8" fill="none"/>
-        <!-- Small beard -->
         <path d="M41,-35 Q42,-28 40,-24" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <!-- Hat -->
         <ellipse cx="36" cy="-58" rx="11" ry="5.5" fill="#2a2a2a"/>
         <rect x="28" y="-62" width="16" height="4" rx="2" fill="#333"/>
-        <!-- Hat ornament -->
         <circle cx="36" cy="-62" r="1.5" fill="#8a6a3a"/>
       </g>
 
-      <!-- ─── Minister 2 (near left, green, kneeling upright, facing right) ─── -->
+      <!-- Minister 2 -->
       <g transform="translate(310,418)">
         <ellipse cx="3" cy="2" rx="38" ry="7" fill="rgba(0,0,0,0.06)"/>
-        <!-- Lower robe pooling (seated) -->
         <path d="M-32,-2 Q-34,-10 -28,-22 L-22,-26 L22,-26 Q30,-14 34,-2 Z" fill="#2a5a3a"/>
-        <!-- Main robe body (torso upright) -->
         <path d="M-22,-26 Q-26,-50 -22,-80 L-10,-95 L14,-95 Q26,-80 28,-50 Q30,-30 22,-26 Z" fill="url(#m2robe)"/>
-        <!-- Inner collar V -->
         <path d="M-6,-95 L1,-70 L8,-95" fill="#f0e6d3" stroke="#e0d6c3" stroke-width="0.4"/>
-        <!-- Belt -->
         <rect x="-20" y="-62" width="42" height="6" rx="3" fill="#7a6a40"/>
         <circle cx="1" cy="-59" r="3" fill="#9a8a50"/>
-        <!-- Robe fold lines -->
-        <g stroke="#1e4a30" stroke-width="0.5" fill="none" opacity="0.25">
-          <path d="M-16,-30 Q-18,-50 -16,-70"/>
-          <path d="M12,-30 Q14,-50 12,-70"/>
-          <path d="M-5,-28 Q-4,-45 -3,-62"/>
-        </g>
-        <!-- Left sleeve -->
+        <g stroke="#1e4a30" stroke-width="0.5" fill="none" opacity="0.25"><path d="M-16,-30 Q-18,-50 -16,-70"/><path d="M12,-30 Q14,-50 12,-70"/><path d="M-5,-28 Q-4,-45 -3,-62"/></g>
         <path d="M-10,-88 Q-30,-84 -38,-90 Q-42,-94 -36,-96 Q-24,-94 -12,-92" fill="url(#m2robe)"/>
-        <!-- Right sleeve -->
         <path d="M14,-88 Q30,-84 38,-78 Q42,-74 38,-72 Q28,-76 16,-82" fill="url(#m2robe)"/>
-        <!-- Hands clasped -->
         <ellipse cx="2" cy="-80" rx="9" ry="5" fill="var(--skin)"/>
         <path d="M-4,-82 Q2,-76 8,-82" stroke="var(--skin-shade)" stroke-width="0.5" fill="none"/>
-        <!-- Neck -->
         <rect x="-4" y="-106" width="10" height="14" rx="4" fill="var(--skin)"/>
-        <!-- Head -->
         <ellipse cx="2" cy="-122" rx="18" ry="20" fill="var(--skin)"/>
-        <!-- Face (looking right toward ZL) -->
         <ellipse cx="8" cy="-123" rx="2.8" ry="2" fill="#2d3748"/>
         <circle cx="8.8" cy="-123.5" r="0.9" fill="white" opacity="0.7"/>
         <ellipse cx="-4" cy="-123" rx="2.8" ry="2" fill="#2d3748"/>
         <circle cx="-3.2" cy="-123.5" r="0.9" fill="white" opacity="0.7"/>
-        <!-- Eyebrows -->
         <path d="M-8,-128 Q-4,-131 -1,-128" stroke="#4a3a2a" stroke-width="1.1" fill="none"/>
         <path d="M5,-128 Q8,-131 12,-128" stroke="#4a3a2a" stroke-width="1.1" fill="none"/>
-        <!-- Nose -->
         <path d="M2,-120 Q3,-116 2,-114" stroke="var(--skin-shade)" stroke-width="0.6" fill="none"/>
-        <!-- Mouth (slightly open - speaking) -->
         <ellipse cx="3" cy="-109" rx="3.5" ry="2" fill="#c47858"/>
         <path d="M0,-109 Q3,-107 6,-109" stroke="#a05838" stroke-width="0.4" fill="none"/>
-        <!-- Small goatee -->
         <path d="M1,-107 Q2,-100 1,-95" stroke="#777" stroke-width="1.2" fill="none" stroke-linecap="round"/>
         <path d="M4,-107 Q5,-99 4,-94" stroke="#777" stroke-width="1" fill="none" stroke-linecap="round"/>
-        <!-- Hat -->
         <ellipse cx="2" cy="-140" rx="13" ry="6" fill="#2a2a2a"/>
         <rect x="-8" y="-144" width="20" height="5" rx="2" fill="#333"/>
         <circle cx="2" cy="-144" r="1.8" fill="#8a6a3a"/>
-        <!-- Hat ribbon -->
         <path d="M-11,-138 Q-16,-130 -14,-120" stroke="#333" stroke-width="1.2" fill="none"/>
         <path d="M15,-138 Q20,-130 18,-120" stroke="#333" stroke-width="1.2" fill="none"/>
       </g>
 
-      <!-- ─── Minister 3 (near right, purple, kneeling upright, facing left) ─── -->
+      <!-- Minister 3 -->
       <g transform="translate(650,418)">
         <ellipse cx="-3" cy="2" rx="38" ry="7" fill="rgba(0,0,0,0.06)"/>
-        <!-- Lower robe pooling -->
         <path d="M32,-2 Q34,-10 28,-22 L22,-26 L-22,-26 Q-30,-14 -34,-2 Z" fill="#30204a"/>
-        <!-- Main robe body -->
         <path d="M22,-26 Q26,-50 22,-80 L10,-95 L-14,-95 Q-26,-80 -28,-50 Q-30,-30 -22,-26 Z" fill="url(#m3robe)"/>
-        <!-- Inner collar V -->
         <path d="M6,-95 L-1,-70 L-8,-95" fill="#f0e6d3" stroke="#e0d6c3" stroke-width="0.4"/>
-        <!-- Belt -->
         <rect x="-22" y="-62" width="42" height="6" rx="3" fill="#7a6a40"/>
         <circle cx="-1" cy="-59" r="3" fill="#9a8a50"/>
-        <!-- Fold lines -->
-        <g stroke="#30204a" stroke-width="0.5" fill="none" opacity="0.25">
-          <path d="M16,-30 Q18,-50 16,-70"/>
-          <path d="M-12,-30 Q-14,-50 -12,-70"/>
-          <path d="M5,-28 Q4,-45 3,-62"/>
-        </g>
-        <!-- Left sleeve -->
+        <g stroke="#30204a" stroke-width="0.5" fill="none" opacity="0.25"><path d="M16,-30 Q18,-50 16,-70"/><path d="M-12,-30 Q-14,-50 -12,-70"/><path d="M5,-28 Q4,-45 3,-62"/></g>
         <path d="M-14,-88 Q-30,-84 -38,-78 Q-42,-74 -38,-72 Q-28,-76 -16,-82" fill="url(#m3robe)"/>
-        <!-- Right sleeve -->
         <path d="M10,-88 Q30,-84 38,-90 Q42,-94 36,-96 Q24,-94 12,-92" fill="url(#m3robe)"/>
-        <!-- Hands clasped -->
         <ellipse cx="-2" cy="-80" rx="9" ry="5" fill="var(--skin)"/>
         <path d="M4,-82 Q-2,-76 -8,-82" stroke="var(--skin-shade)" stroke-width="0.5" fill="none"/>
-        <!-- Neck -->
         <rect x="-6" y="-106" width="10" height="14" rx="4" fill="var(--skin)"/>
-        <!-- Head -->
         <ellipse cx="-2" cy="-122" rx="18" ry="20" fill="var(--skin)"/>
-        <!-- Face (looking left toward ZL) -->
         <ellipse cx="-8" cy="-123" rx="2.8" ry="2" fill="#2d3748"/>
         <circle cx="-8.8" cy="-123.5" r="0.9" fill="white" opacity="0.7"/>
         <ellipse cx="4" cy="-123" rx="2.8" ry="2" fill="#2d3748"/>
         <circle cx="3.2" cy="-123.5" r="0.9" fill="white" opacity="0.7"/>
-        <!-- Eyebrows -->
         <path d="M8,-128 Q4,-131 1,-128" stroke="#4a3a2a" stroke-width="1.1" fill="none"/>
         <path d="M-5,-128 Q-8,-131 -12,-128" stroke="#4a3a2a" stroke-width="1.1" fill="none"/>
-        <!-- Nose -->
         <path d="M-2,-120 Q-3,-116 -2,-114" stroke="var(--skin-shade)" stroke-width="0.6" fill="none"/>
-        <!-- Mouth (slightly open) -->
         <ellipse cx="-3" cy="-109" rx="3.5" ry="2" fill="#c47858"/>
         <path d="M0,-109 Q-3,-107 -6,-109" stroke="#a05838" stroke-width="0.4" fill="none"/>
-        <!-- Small mustache -->
         <path d="M-6,-108 Q-8,-105 -10,-104" stroke="#777" stroke-width="0.8" fill="none"/>
         <path d="M0,-108 Q2,-105 4,-104" stroke="#777" stroke-width="0.8" fill="none"/>
-        <!-- Hat -->
         <ellipse cx="-2" cy="-140" rx="13" ry="6" fill="#2a2a2a"/>
         <rect x="-12" y="-144" width="20" height="5" rx="2" fill="#333"/>
         <circle cx="-2" cy="-144" r="1.8" fill="#8a6a3a"/>
-        <!-- Hat ribbon -->
         <path d="M11,-138 Q16,-130 14,-120" stroke="#333" stroke-width="1.2" fill="none"/>
         <path d="M-15,-138 Q-20,-130 -18,-120" stroke="#333" stroke-width="1.2" fill="none"/>
       </g>
 
-      <!-- ─── Minister 4 (far right, brown, kneeling deep bow, facing left) ─── -->
+      <!-- Minister 4 -->
       <g transform="translate(800,418)">
         <ellipse cx="-5" cy="2" rx="42" ry="7" fill="rgba(0,0,0,0.06)"/>
-        <!-- Lower robe pooling -->
         <path d="M30,-2 Q34,-8 28,-16 Q20,-28 0,-36 Q-14,-30 -22,-20 Q-30,-8 -34,-2 Z" fill="url(#m4robe)"/>
         <path d="M34,-2 Q36,2 32,5 L-36,5 Q-38,2 -34,-2" fill="#5a4020"/>
-        <!-- Fold lines -->
-        <g stroke="#4a3020" stroke-width="0.6" fill="none" opacity="0.3">
-          <path d="M15,-6 Q10,-18 -5,-28"/>
-          <path d="M-10,-4 Q-12,-15 -18,-22"/>
-        </g>
-        <!-- Upper body bent forward -->
+        <g stroke="#4a3020" stroke-width="0.6" fill="none" opacity="0.3"><path d="M15,-6 Q10,-18 -5,-28"/><path d="M-10,-4 Q-12,-15 -18,-22"/></g>
         <path d="M0,-36 Q-15,-42 -28,-38 Q-35,-34 -32,-28" fill="url(#m4robe)"/>
-        <!-- Arms forward -->
         <path d="M-28,-32 Q-38,-30 -46,-25" stroke="var(--skin)" stroke-width="7" fill="none" stroke-linecap="round"/>
         <ellipse cx="-48" cy="-23" rx="5.5" ry="4" fill="var(--skin)" transform="rotate(10,-48,-23)"/>
-        <!-- Head (slightly raised, facing left) -->
         <ellipse cx="-36" cy="-44" rx="15" ry="17" fill="var(--skin)"/>
-        <!-- Face -->
         <ellipse cx="-42" cy="-45" rx="2.2" ry="1.6" fill="#2d3748"/>
         <circle cx="-42.5" cy="-45.5" r="0.7" fill="white" opacity="0.7"/>
         <path d="M-45,-49 Q-42,-51 -39,-49" stroke="#4a3a2a" stroke-width="0.9" fill="none"/>
         <path d="M-43,-42 Q-44,-40 -43,-39" stroke="var(--skin-shade)" stroke-width="0.5" fill="none"/>
         <path d="M-45,-36 Q-43,-35 -41,-36" stroke="#a06848" stroke-width="0.8" fill="none"/>
-        <!-- Longer beard -->
         <path d="M-43,-35 Q-45,-26 -42,-20" stroke="#999" stroke-width="1.8" fill="none" stroke-linecap="round"/>
         <path d="M-40,-35 Q-41,-25 -39,-18" stroke="#999" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <!-- Hat -->
         <ellipse cx="-36" cy="-58" rx="11" ry="5.5" fill="#3a3530"/>
         <rect x="-44" y="-62" width="16" height="4" rx="2" fill="#444038"/>
         <circle cx="-36" cy="-62" r="1.5" fill="#8a6a3a"/>
       </g>
 
-      <!-- ─── Zhuge Liang (center, standing on platform) ─── -->
+      <!-- Zhuge Liang -->
       <g transform="translate(480,406)">
-        <!-- Shadow -->
         <ellipse cx="0" cy="2" rx="52" ry="9" fill="rgba(0,0,0,0.1)"/>
-
-        <!-- Feet -->
         <rect x="-14" y="-8" width="12" height="6" rx="3" fill="#2c2c2c"/>
         <rect x="2" y="-8" width="12" height="6" rx="3" fill="#2c2c2c"/>
-
-        <!-- Outer robe (main garment) -->
         <path d="M-58,-8 C-62,-60 -50,-140 -38,-188 L-24,-200 L24,-200 Q50,-140 62,-60 L58,-8 Q30,0 0,2 Q-30,0 -58,-8 Z" fill="url(#zl-robe)"/>
-
-        <!-- Robe fold lines -->
         <g stroke="#1e4a6a" stroke-width="0.7" fill="none" opacity="0.3">
-          <path d="M-35,-20 Q-38,-80 -34,-150"/>
-          <path d="M-18,-14 Q-20,-80 -18,-160"/>
-          <path d="M18,-14 Q20,-80 18,-160"/>
-          <path d="M35,-20 Q38,-80 34,-150"/>
-          <path d="M-8,-10 Q-6,-80 -5,-150"/>
-          <path d="M8,-10 Q6,-80 5,-150"/>
+          <path d="M-35,-20 Q-38,-80 -34,-150"/><path d="M-18,-14 Q-20,-80 -18,-160"/>
+          <path d="M18,-14 Q20,-80 18,-160"/><path d="M35,-20 Q38,-80 34,-150"/>
+          <path d="M-8,-10 Q-6,-80 -5,-150"/><path d="M8,-10 Q6,-80 5,-150"/>
         </g>
-
-        <!-- Robe hem detail -->
         <path d="M-58,-8 Q-50,-14 -30,-16 Q0,-18 30,-16 Q50,-14 58,-8 Q50,-4 30,-2 Q0,0 -30,-2 Q-50,-4 -58,-8" fill="url(#zl-robe2)" opacity="0.5"/>
-
-        <!-- Inner robe V-neckline -->
         <path d="M-12,-200 L-2,-152 L0,-148 L2,-152 L12,-200" fill="#f0e6d3" stroke="#e0d6c3" stroke-width="0.5"/>
-        <!-- Inner collar edges -->
         <path d="M-14,-198 L-12,-200" stroke="#ddd2be" stroke-width="1"/>
         <path d="M14,-198 L12,-200" stroke="#ddd2be" stroke-width="1"/>
-
-        <!-- Gold belt/sash -->
         <rect x="-38" y="-158" width="76" height="8" rx="4" fill="#c9a74a"/>
-        <circle cx="0" cy="-154" r="5" fill="#dbb85a"/>
-        <circle cx="0" cy="-154" r="3" fill="#c9a74a"/>
-        <!-- Belt side tassels -->
+        <circle cx="0" cy="-154" r="5" fill="#dbb85a"/><circle cx="0" cy="-154" r="3" fill="#c9a74a"/>
         <path d="M-38,-154 Q-44,-150 -42,-138" stroke="#c9a74a" stroke-width="1.5" fill="none"/>
         <circle cx="-42" cy="-138" r="2" fill="#dbb85a"/>
-
-        <!-- Left sleeve (fan side) - flowing, wider -->
         <path d="M-24,-195 Q-55,-188 -78,-195 Q-92,-200 -98,-210 Q-94,-216 -84,-212 Q-62,-204 -36,-200" fill="url(#zl-robe)"/>
-        <!-- Sleeve fold -->
         <path d="M-50,-196 Q-65,-198 -80,-205" stroke="#1e4a6a" stroke-width="0.5" fill="none" opacity="0.3"/>
-
-        <!-- Right sleeve -->
         <path d="M24,-195 Q52,-188 72,-178 Q86,-170 90,-160 Q86,-155 78,-162 Q60,-178 36,-192" fill="url(#zl-robe)"/>
-        <!-- Sleeve fold -->
         <path d="M50,-186 Q65,-176 78,-166" stroke="#1e4a6a" stroke-width="0.5" fill="none" opacity="0.3"/>
-
-        <!-- Right hand (gesture) -->
         <g transform="translate(88,-162)">
           <ellipse cx="0" cy="0" rx="7" ry="5.5" fill="var(--skin)" transform="rotate(-20)"/>
-          <!-- Fingers slightly spread -->
           <path d="M4,-3 Q8,-6 9,-4" stroke="var(--skin)" stroke-width="2" fill="none" stroke-linecap="round"/>
           <path d="M5,-1 Q10,-2 10,0" stroke="var(--skin)" stroke-width="2" fill="none" stroke-linecap="round"/>
         </g>
-
-        <!-- Fan (held in left hand) -->
         <g transform="translate(-102,-240) rotate(-12)">
-          <!-- Handle -->
           <line x1="0" y1="24" x2="0" y2="50" stroke="#c9a74a" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="0" cy="24" r="3.5" fill="#c9a74a"/>
-          <circle cx="0" cy="50" r="2" fill="#dbb85a"/>
-          <!-- Fan feathers -->
+          <circle cx="0" cy="24" r="3.5" fill="#c9a74a"/><circle cx="0" cy="50" r="2" fill="#dbb85a"/>
           <path d="M0,22 Q-28,-18 -24,-54 Q-14,-34 0,18Z" fill="#f0e6d3" stroke="#ddd2be" stroke-width="0.5"/>
           <path d="M0,22 Q-16,-25 -12,-58 Q-5,-36 0,18Z" fill="#f5efe4" stroke="#ddd2be" stroke-width="0.5"/>
           <path d="M0,22 Q0,-30 0,-62 Q7,-36 0,18Z" fill="#faf8f0" stroke="#ddd2be" stroke-width="0.5"/>
           <path d="M0,22 Q16,-25 12,-58 Q5,-36 0,18Z" fill="#f5efe4" stroke="#ddd2be" stroke-width="0.5"/>
           <path d="M0,22 Q28,-18 24,-54 Q14,-34 0,18Z" fill="#f0e6d3" stroke="#ddd2be" stroke-width="0.5"/>
-          <!-- Ribs -->
           <g stroke="#c9a74a" stroke-width="0.5" opacity="0.35">
             <line x1="0" y1="20" x2="-22" y2="-50"/><line x1="0" y1="20" x2="-10" y2="-56"/>
             <line x1="0" y1="20" x2="0" y2="-60"/>
             <line x1="0" y1="20" x2="10" y2="-56"/><line x1="0" y1="20" x2="22" y2="-50"/>
           </g>
         </g>
-        <!-- Left hand holding fan -->
         <ellipse cx="-100" cy="-212" rx="7" ry="5" fill="var(--skin)" transform="rotate(12,-100,-212)"/>
-
-        <!-- Neck -->
         <rect x="-6" y="-225" width="12" height="22" rx="5.5" fill="var(--skin)"/>
-
-        <!-- Head -->
         <ellipse cx="0" cy="-250" rx="24" ry="28" fill="var(--skin)"/>
-
-        <!-- Ears -->
         <ellipse cx="-22" cy="-248" rx="5" ry="8" fill="var(--skin)"/>
         <ellipse cx="-22" cy="-248" rx="3" ry="5" fill="var(--skin-shade)" opacity="0.3"/>
         <ellipse cx="22" cy="-248" rx="5" ry="8" fill="var(--skin)"/>
         <ellipse cx="22" cy="-248" rx="3" ry="5" fill="var(--skin-shade)" opacity="0.3"/>
-
-        <!-- Eyes -->
         <g>
           <ellipse cx="-9" cy="-253" rx="3.8" ry="2.8" fill="#2d3748"/>
           <circle cx="-8" cy="-253.5" r="1.3" fill="white" opacity="0.8"/>
           <ellipse cx="9" cy="-253" rx="3.8" ry="2.8" fill="#2d3748"/>
           <circle cx="10" cy="-253.5" r="1.3" fill="white" opacity="0.8"/>
         </g>
-        <!-- Eyelids -->
         <path d="M-14,-254 Q-9,-258 -5,-254" stroke="var(--skin-shade)" stroke-width="0.6" fill="none"/>
         <path d="M5,-254 Q9,-258 14,-254" stroke="var(--skin-shade)" stroke-width="0.6" fill="none"/>
-        <!-- Eyebrows (long, elegant) -->
         <path d="M-16,-260 Q-9,-264 -3,-260" stroke="#4a3a2a" stroke-width="1.6" fill="none"/>
         <path d="M3,-260 Q9,-264 16,-260" stroke="#4a3a2a" stroke-width="1.6" fill="none"/>
-        <!-- Nose -->
         <path d="M0,-250 Q1,-244 0,-240" stroke="var(--skin-shade)" stroke-width="0.8" fill="none"/>
         <path d="M-2,-240 Q0,-238 2,-240" stroke="var(--skin-shade)" stroke-width="0.6" fill="none"/>
-        <!-- Serene smile -->
         <path d="M-6,-234 Q0,-230 6,-234" stroke="#a06848" stroke-width="1.2" fill="none"/>
-        <!-- Smile lines -->
         <path d="M-8,-234 Q-9,-232 -8,-230" stroke="var(--skin-shade)" stroke-width="0.4" fill="none" opacity="0.4"/>
         <path d="M8,-234 Q9,-232 8,-230" stroke="var(--skin-shade)" stroke-width="0.4" fill="none" opacity="0.4"/>
-
-        <!-- Beard (long, flowing) -->
         <g fill="none" stroke-linecap="round">
           <path d="M-12,-232 Q-18,-205 -14,-175 Q-12,-160 -8,-148" stroke="#8a8a90" stroke-width="2.8"/>
           <path d="M-6,-234 Q-5,-200 -2,-170 Q0,-155 0,-145" stroke="#8a8a90" stroke-width="2.8"/>
           <path d="M6,-234 Q5,-200 2,-170 Q0,-155 0,-145" stroke="#8a8a90" stroke-width="2.2"/>
           <path d="M12,-232 Q18,-205 14,-175 Q12,-160 8,-148" stroke="#8a8a90" stroke-width="2.8"/>
-          <!-- Wispy ends -->
           <path d="M-9,-150 Q-10,-142 -12,-138" stroke="#8a8a90" stroke-width="1.5" opacity="0.5"/>
           <path d="M9,-150 Q10,-142 12,-138" stroke="#8a8a90" stroke-width="1.5" opacity="0.5"/>
         </g>
-
-        <!-- Hat (诸葛巾 - Zhuge headcloth, tall and distinctive) -->
         <path d="M-20,-268 L-24,-284 Q-20,-306 -10,-318 L0,-324 L10,-318 Q20,-306 24,-284 L20,-268" fill="url(#zl-hat)"/>
-        <!-- Hat base band -->
         <path d="M-26,-268 L26,-268 L24,-260 L-24,-260Z" fill="#1e3a5e"/>
-        <!-- Hat front panel -->
         <line x1="-18" y1="-264" x2="18" y2="-264" stroke="#4a7a9a" stroke-width="0.8" opacity="0.4"/>
-        <!-- Hat vertical center line -->
         <line x1="0" y1="-268" x2="0" y2="-320" stroke="#4a7a9a" stroke-width="0.5" opacity="0.2"/>
-        <!-- Hat ribbons flowing down -->
         <path d="M-24,-264 Q-34,-252 -32,-235 Q-30,-220 -28,-210" stroke="#2c4a6e" stroke-width="2" fill="none" stroke-linecap="round"/>
         <path d="M24,-264 Q34,-252 32,-235 Q30,-220 28,-210" stroke="#2c4a6e" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <!-- Ribbon ends -->
         <path d="M-28,-210 Q-27,-204 -30,-200" stroke="#2c4a6e" stroke-width="1.2" fill="none"/>
         <path d="M28,-210 Q27,-204 30,-200" stroke="#2c4a6e" stroke-width="1.2" fill="none"/>
       </g>
     </svg>
 
-    <!-- ── Speech Bubbles (HTML overlays) ── -->
+    <!-- Speech Bubbles -->
     <div class="zl-bubble">
       <p class="b-text" id="quoteText"></p>
       <span class="b-attr">— 제갈량</span>
     </div>
-
-    <div class="m-bubble m1">
-      <span id="m1Text"></span>
-      <span class="m-name">장수 1</span>
-    </div>
-    <div class="m-bubble m2">
-      <span id="m2Text"></span>
-      <span class="m-name">참모 1</span>
-    </div>
-    <div class="m-bubble m3">
-      <span id="m3Text"></span>
-      <span class="m-name">참모 2</span>
-    </div>
-    <div class="m-bubble m4">
-      <span id="m4Text"></span>
-      <span class="m-name">원로대신</span>
-    </div>
+    <div class="m-bubble m1"><span id="m1Text"></span><span class="m-name">장수 1</span></div>
+    <div class="m-bubble m2"><span id="m2Text"></span><span class="m-name">참모 1</span></div>
+    <div class="m-bubble m3"><span id="m3Text"></span><span class="m-name">참모 2</span></div>
+    <div class="m-bubble m4"><span id="m4Text"></span><span class="m-name">원로대신</span></div>
   </div>
 </div>
 
@@ -629,54 +533,26 @@
   <div class="title-date" id="heroDate"></div>
   <h1>上疏文</h1>
   <p class="title-sub">제갈량의 아침 편지</p>
+  <span class="topic-badge" id="topicBadge" hidden></span>
 </div>
 
-<!-- ═══════ Body ═══════ -->
+<!-- Body -->
 <div class="scroll-body">
-
-  <!-- Opening -->
   <div class="opening">
-    <p class="greeting">안녕하세요! 여러분의 충실한 참모, 제갈량이에요.</p>
-    <p>오늘도 좋은 아침이에요! 옛날에 제가 유비 임금님을 도와드렸듯이, 이제는 여러분을 도와드리려고 매일 아침 이 편지를 써요. 두 가지 이야기를 준비했어요. 하나는 Claude Code를 잘 쓰는 방법이고, 다른 하나는 인생을 멋지게 살아가는 방법이에요. 어렵지 않으니까 편하게 읽어주세요!</p>
+    <p class="greeting" id="greetingEl"></p>
+    <p id="openingEl"></p>
   </div>
 
-  <!-- ═══ Section 1 ═══ -->
-  <section class="section">
+  <section class="section" id="sec1">
     <div class="section-head">
-      <span class="section-label">第一章</span>
-      <h2>Claude Code 잘 쓰는 법<span class="hanja">(技術之道)</span></h2>
-      <p class="section-desc">똑똑한 참모를 200% 활용하는 다섯 가지 비법</p>
+      <span class="section-label" id="s1Label"></span>
+      <h2 id="s1Title"></h2>
+      <p class="section-desc" id="s1Desc"></p>
     </div>
-
-    <p class="section-intro">Claude Code는 여러분 옆에서 도와주는 똑똑한 친구 같은 거예요. 이 친구를 잘 부리면 정말 많은 일을 해낼 수 있어요. 다섯 가지 비법을 알려드릴게요!</p>
-
-    <div class="point">
-      <p class="point-title">첫째, 하고 싶은 걸 정확하게 말해요</p>
-      <p>식당에서 "아무거나 주세요"라고 하면 내가 원하는 음식이 안 나오죠? Claude Code도 마찬가지예요. "이거 좀 고쳐줘" 보다는 "이 버튼을 누르면 파란색으로 바뀌게 해줘"처럼 구체적으로 말하면, 훨씬 좋은 결과가 나와요. 뭘 하고 싶은지, 어디를 고치고 싶은지, 어떻게 되면 좋겠는지 — 이 세 가지를 말해주면 완벽해요!</p>
-    </div>
-
-    <div class="point">
-      <p class="point-title">둘째, 작은 것부터 시작해요</p>
-      <p>게임도 1단계부터 시작하잖아요? 처음부터 엄청 복잡한 걸 만들려고 하지 말고, 쉬운 것부터 하나씩 해봐요. "이 파일 읽어줘", "이 에러가 무슨 뜻이야?", "이 코드 설명해줘" 같은 간단한 것부터요. 작은 성공을 많이 쌓다 보면 어느새 큰 것도 거뜬히 해낼 수 있게 돼요!</p>
-    </div>
-
-    <div class="point">
-      <p class="point-title">셋째, "왜?"를 꼭 물어봐요</p>
-      <p>시험 답지만 베끼면 공부가 안 되는 것처럼, Claude Code가 코드를 만들어주면 그냥 복사하지 말고 "이게 왜 이렇게 되는 거야?" 하고 꼭 물어봐요. 한 줄 한 줄 이해하려고 노력하면 실력이 쑥쑥 늘어요. 진짜 고수는 남의 코드를 읽을 줄 아는 사람이에요!</p>
-    </div>
-
-    <div class="point">
-      <p class="point-title">넷째, 에러가 나도 괜찮아요!</p>
-      <p>에러는 무서운 게 아니에요! 길을 잘못 갔을 때 네비게이션이 "경로를 이탈했습니다"라고 알려주는 것처럼, 에러도 "여기가 틀렸어요!"라고 친절하게 알려주는 거예요. 에러 메시지를 그대로 복사해서 Claude Code에게 보여주면 금방 해결해줘요. 에러는 실패가 아니라 배우는 과정이에요!</p>
-    </div>
-
-    <div class="point">
-      <p class="point-title">다섯째, 매일 조금씩 해봐요</p>
-      <p>제가 '와룡(잠자는 용)'이라는 별명을 얻기까지 10년 동안 매일매일 공부했어요. 하루에 한 가지만 새로 배워도, 한 달이면 30가지를 알게 되고, 일 년이면 365가지나 돼요! /help 명령어로 어떤 기능이 있는지 살펴보고, 하나씩 써봐요. 천천히, 꾸준히 하는 게 제일 중요한 비법이에요!</p>
-    </div>
+    <p class="section-intro" id="s1Intro"></p>
+    <div id="s1Points"></div>
   </section>
 
-  <!-- Ink divider -->
   <div class="ink-divider" aria-hidden="true">
     <svg viewBox="0 0 400 20">
       <path d="M20,10 C60,7 100,13 160,10 C220,7 260,13 320,10 C350,8 370,11 380,10" stroke="var(--rule)" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.5"/>
@@ -684,73 +560,25 @@
     </svg>
   </div>
 
-  <!-- ═══ Section 2 ═══ -->
-  <section class="section">
+  <section class="section" id="sec2">
     <div class="section-head">
-      <span class="section-label">第二章</span>
-      <h2>인생을 멋지게 사는 법<span class="hanja">(生之道)</span></h2>
-      <p class="section-desc">삼국지 시대를 살며 배운 일곱 가지 인생 지혜</p>
+      <span class="section-label" id="s2Label"></span>
+      <h2 id="s2Title"></h2>
+      <p class="section-desc" id="s2Desc"></p>
     </div>
-
-    <p class="section-intro">코드도 중요하지만, 더 중요한 건 잘 사는 거예요. 제가 삼국지 시대를 살면서 겪고 배운 인생 이야기를 쉽게 풀어드릴게요!</p>
-
-    <div class="point">
-      <p class="point-title">첫째, 내가 뭘 하고 싶은지 정해요</p>
-      <p>네비게이션도 목적지를 넣어야 길을 알려주잖아요? 내 인생도 마찬가지예요. 유비 임금님은 짚신을 짜면서도 "나는 반드시 나라를 세우겠다"는 꿈이 있었어요. 그래서 결국 해냈죠. 당장 거창한 꿈이 아니어도 괜찮아요. "이번 달에 이거 해보고 싶다" 정도면 충분해요. 작은 목표를 하나씩 정하다 보면, 점점 큰 꿈도 보이기 시작해요.</p>
-    </div>
-
-    <div class="point">
-      <p class="point-title">둘째, 세상이 어떻게 변하는지 봐요</p>
-      <p>제가 유비 임금님에게 "천하를 셋으로 나누는 계획"을 말씀드릴 수 있었던 건, 매일 세상 돌아가는 걸 관심있게 봤기 때문이에요. 요즘 사람들이 뭘 좋아하는지, 어떤 기술이 뜨고 있는지, 뉴스도 보고 사람들 이야기도 들어보세요. 눈과 귀를 열어두면 좋은 아이디어가 갑자기 떠오를 때가 있어요!</p>
-    </div>
-
-    <div class="point">
-      <p class="point-title">셋째, 좋은 사람을 알아봐요</p>
-      <p>유비 임금님의 가장 큰 능력은 좋은 사람을 알아보는 눈이었어요. 관우, 장비, 조운 장군, 그리고 시골에서 밭이나 갈던 저까지도요! 혼자서 다 잘할 수는 없어요. 나보다 잘하는 사람한테 배우고, 함께 할 좋은 사람을 찾아보세요. 다만 말만 번지르르한 사람 말고, 실제로 행동으로 보여주는 사람을 고르는 게 중요해요.</p>
-    </div>
-
-    <div class="point">
-      <p class="point-title">넷째, 내 몸과 마음을 챙겨요</p>
-      <p>솔직히 말할게요 — 이건 제가 가장 후회하는 거예요. 저는 밤잠 안 자고, 밥도 안 먹고 일만 하다가 결국 오장원에서 쓰러졌거든요... 아무리 바빠도 밥은 꼭 먹고, 잠은 충분히 자세요. 운동도 조금씩 하고, 가족이나 친구들이랑 시간도 보내세요. 건강해야 꿈도 이루고, 좋아하는 일도 오래 할 수 있어요. 제 실수를 따라하지 마세요!</p>
-    </div>
-
-    <div class="point">
-      <p class="point-title">다섯째, 넘어져도 다시 일어나요</p>
-      <p>유비 임금님은 20년 넘게 이리저리 쫓겨 다니면서 수없이 실패했어요. 그런데 포기하지 않았기 때문에 결국 나라를 세울 수 있었죠! 일이 안 풀리면 속상하지만, 그건 끝이 아니라 새로운 시작이에요. 다만, 왜 실패했는지는 꼭 돌아봐요. 같은 돌에 두 번 걸려 넘어지지 않는 게 진짜 지혜거든요.</p>
-    </div>
-
-    <div class="point">
-      <p class="point-title">여섯째, 약속을 잘 지켜요</p>
-      <p>관우 장군이 그렇게 유명했던 이유 중 하나가 의리, 즉 약속을 반드시 지키는 사람이었기 때문이에요. 작은 약속이라도 지키는 사람한테 사람들이 큰 일을 맡겨요. "내일까지 할게요"라고 했으면 꼭 하세요. 혹시 못 할 것 같으면 솔직하게 미리 말하는 게 훨씬 나아요. 믿음은 쌓기는 오래 걸리지만 무너지는 건 한순간이거든요.</p>
-    </div>
-
-    <div class="point">
-      <p class="point-title">일곱째, 큰 꿈을 꾸되 오늘 할 일부터 해요</p>
-      <p>제가 세운 '천하삼분지계'는 정말 거대한 계획이었지만, 결국 매일매일 작은 전투에서 이겼기 때문에 실현할 수 있었어요. 꿈은 크게 가지세요! 하지만 오늘 당장 할 수 있는 작은 일부터 하나씩 해봐요. 매일 벽돌 한 장씩 쌓으면 언젠가 멋진 성이 되는 거예요. 오늘 코드 한 줄, 전화 한 통, 책 한 페이지 — 그게 모여서 여러분의 미래가 돼요!</p>
-    </div>
+    <p class="section-intro" id="s2Intro"></p>
+    <div id="s2Points"></div>
   </section>
 
-  <!-- ═══ Closing ═══ -->
   <div class="closing">
-    <p class="closing-text">
-      오늘의 이야기는 여기까지예요!<br><br>
-      아침마다 이 글을 한 번 읽으면서<br>
-      마음을 가다듬어 보세요.<br>
-      그리고 오늘 하루도 씩씩하게 보내세요!<br><br>
-      여러분은 할 수 있어요.<br>
-      여러분의 충실한 참모, 제갈량이<br>
-      언제나 응원하고 있답니다!
-    </p>
-
+    <p class="closing-text" id="closingText"></p>
     <div class="seal-area">
       <div class="seal-box">
         <span class="seal-char">臥</span>
         <span class="seal-char">龍</span>
       </div>
     </div>
-
     <p class="closing-date" id="closingDate"></p>
-
     <p class="closing-note">
       이 상소문은 매일 아침 여러분의 하루를 여는 편지예요.<br>
       브라우저 시작 페이지로 설정하면, 컴퓨터를 켤 때마다 제갈량이 맞이해준답니다!
@@ -758,87 +586,274 @@
   </div>
 </div>
 
+<!-- Topic change button -->
+<button class="topic-btn" id="topicBtn" hidden>주제 변경</button>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal">
+    <h3>상소문 주제 입력</h3>
+    <p class="modal-desc">어떤 주제로 제갈량의 조언을 받고 싶으세요?<br>주제를 입력하면 제갈량이 새로운 상소문을 작성합니다.</p>
+    <textarea id="topicInput" placeholder="예: 팀 리더십과 소통에 대해 조언해줘&#10;예: 새로운 사업을 시작할 때 주의할 점&#10;예: 프로그래밍 초보가 실력을 키우는 방법"></textarea>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="cancelBtn">취소</button>
+      <button class="btn-gen" id="generateBtn">생성하기</button>
+    </div>
+    <div class="gen-status" id="genStatus" hidden>
+      <div class="gen-bar"><div class="gen-bar-fill"></div></div>
+      <p id="genText">제갈량이 생각하는 중...</p>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
-  var stems=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
-  var branches=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
-  var mNames=['','正','二','三','四','五','六','七','八','九','十','十一','十二'];
+  // ── Default content ──
+  var DEFAULT = {
+    topic: '',
+    greeting: '안녕하세요! 여러분의 충실한 참모, 제갈량이에요.',
+    opening: '오늘도 좋은 아침이에요! 옛날에 제가 유비 임금님을 도와드렸듯이, 이제는 여러분을 도와드리려고 매일 아침 이 편지를 써요. 두 가지 이야기를 준비했어요. 하나는 Claude Code를 잘 쓰는 방법이고, 다른 하나는 인생을 멋지게 살아가는 방법이에요. 어렵지 않으니까 편하게 읽어주세요!',
+    section1: {
+      label: '第一章', title: 'Claude Code 잘 쓰는 법', hanja: '(技術之道)',
+      desc: '똑똑한 참모를 200% 활용하는 다섯 가지 비법',
+      intro: 'Claude Code는 여러분 옆에서 도와주는 똑똑한 친구 같은 거예요. 이 친구를 잘 부리면 정말 많은 일을 해낼 수 있어요. 다섯 가지 비법을 알려드릴게요!',
+      points: [
+        {title:'첫째, 하고 싶은 걸 정확하게 말해요', body:'식당에서 "아무거나 주세요"라고 하면 내가 원하는 음식이 안 나오죠? Claude Code도 마찬가지예요. "이거 좀 고쳐줘" 보다는 "이 버튼을 누르면 파란색으로 바뀌게 해줘"처럼 구체적으로 말하면, 훨씬 좋은 결과가 나와요. 뭘 하고 싶은지, 어디를 고치고 싶은지, 어떻게 되면 좋겠는지 — 이 세 가지를 말해주면 완벽해요!'},
+        {title:'둘째, 작은 것부터 시작해요', body:'게임도 1단계부터 시작하잖아요? 처음부터 엄청 복잡한 걸 만들려고 하지 말고, 쉬운 것부터 하나씩 해봐요. "이 파일 읽어줘", "이 에러가 무슨 뜻이야?", "이 코드 설명해줘" 같은 간단한 것부터요. 작은 성공을 많이 쌓다 보면 어느새 큰 것도 거뜬히 해낼 수 있게 돼요!'},
+        {title:'셋째, "왜?"를 꼭 물어봐요', body:'시험 답지만 베끼면 공부가 안 되는 것처럼, Claude Code가 코드를 만들어주면 그냥 복사하지 말고 "이게 왜 이렇게 되는 거야?" 하고 꼭 물어봐요. 한 줄 한 줄 이해하려고 노력하면 실력이 쑥쑥 늘어요. 진짜 고수는 남의 코드를 읽을 줄 아는 사람이에요!'},
+        {title:'넷째, 에러가 나도 괜찮아요!', body:'에러는 무서운 게 아니에요! 길을 잘못 갔을 때 네비게이션이 "경로를 이탈했습니다"라고 알려주는 것처럼, 에러도 "여기가 틀렸어요!"라고 친절하게 알려주는 거예요. 에러 메시지를 그대로 복사해서 Claude Code에게 보여주면 금방 해결해줘요. 에러는 실패가 아니라 배우는 과정이에요!'},
+        {title:'다섯째, 매일 조금씩 해봐요', body:'제가 \'와룡(잠자는 용)\'이라는 별명을 얻기까지 10년 동안 매일매일 공부했어요. 하루에 한 가지만 새로 배워도, 한 달이면 30가지를 알게 되고, 일 년이면 365가지나 돼요! /help 명령어로 어떤 기능이 있는지 살펴보고, 하나씩 써봐요. 천천히, 꾸준히 하는 게 제일 중요한 비법이에요!'}
+      ]
+    },
+    section2: {
+      label: '第二章', title: '인생을 멋지게 사는 법', hanja: '(生之道)',
+      desc: '삼국지 시대를 살며 배운 일곱 가지 인생 지혜',
+      intro: '코드도 중요하지만, 더 중요한 건 잘 사는 거예요. 제가 삼국지 시대를 살면서 겪고 배운 인생 이야기를 쉽게 풀어드릴게요!',
+      points: [
+        {title:'첫째, 내가 뭘 하고 싶은지 정해요', body:'네비게이션도 목적지를 넣어야 길을 알려주잖아요? 내 인생도 마찬가지예요. 유비 임금님은 짚신을 짜면서도 "나는 반드시 나라를 세우겠다"는 꿈이 있었어요. 그래서 결국 해냈죠. 당장 거창한 꿈이 아니어도 괜찮아요. "이번 달에 이거 해보고 싶다" 정도면 충분해요. 작은 목표를 하나씩 정하다 보면, 점점 큰 꿈도 보이기 시작해요.'},
+        {title:'둘째, 세상이 어떻게 변하는지 봐요', body:'제가 유비 임금님에게 "천하를 셋으로 나누는 계획"을 말씀드릴 수 있었던 건, 매일 세상 돌아가는 걸 관심있게 봤기 때문이에요. 요즘 사람들이 뭘 좋아하는지, 어떤 기술이 뜨고 있는지, 뉴스도 보고 사람들 이야기도 들어보세요. 눈과 귀를 열어두면 좋은 아이디어가 갑자기 떠오를 때가 있어요!'},
+        {title:'셋째, 좋은 사람을 알아봐요', body:'유비 임금님의 가장 큰 능력은 좋은 사람을 알아보는 눈이었어요. 관우, 장비, 조운 장군, 그리고 시골에서 밭이나 갈던 저까지도요! 혼자서 다 잘할 수는 없어요. 나보다 잘하는 사람한테 배우고, 함께 할 좋은 사람을 찾아보세요. 다만 말만 번지르르한 사람 말고, 실제로 행동으로 보여주는 사람을 고르는 게 중요해요.'},
+        {title:'넷째, 내 몸과 마음을 챙겨요', body:'솔직히 말할게요 — 이건 제가 가장 후회하는 거예요. 저는 밤잠 안 자고, 밥도 안 먹고 일만 하다가 결국 오장원에서 쓰러졌거든요... 아무리 바빠도 밥은 꼭 먹고, 잠은 충분히 자세요. 운동도 조금씩 하고, 가족이나 친구들이랑 시간도 보내세요. 건강해야 꿈도 이루고, 좋아하는 일도 오래 할 수 있어요. 제 실수를 따라하지 마세요!'},
+        {title:'다섯째, 넘어져도 다시 일어나요', body:'유비 임금님은 20년 넘게 이리저리 쫓겨 다니면서 수없이 실패했어요. 그런데 포기하지 않았기 때문에 결국 나라를 세울 수 있었죠! 일이 안 풀리면 속상하지만, 그건 끝이 아니라 새로운 시작이에요. 다만, 왜 실패했는지는 꼭 돌아봐요. 같은 돌에 두 번 걸려 넘어지지 않는 게 진짜 지혜거든요.'},
+        {title:'여섯째, 약속을 잘 지켜요', body:'관우 장군이 그렇게 유명했던 이유 중 하나가 의리, 즉 약속을 반드시 지키는 사람이었기 때문이에요. 작은 약속이라도 지키는 사람한테 사람들이 큰 일을 맡겨요. "내일까지 할게요"라고 했으면 꼭 하세요. 혹시 못 할 것 같으면 솔직하게 미리 말하는 게 훨씬 나아요. 믿음은 쌓기는 오래 걸리지만 무너지는 건 한순간이거든요.'},
+        {title:'일곱째, 큰 꿈을 꾸되 오늘 할 일부터 해요', body:'제가 세운 \'천하삼분지계\'는 정말 거대한 계획이었지만, 결국 매일매일 작은 전투에서 이겼기 때문에 실현할 수 있었어요. 꿈은 크게 가지세요! 하지만 오늘 당장 할 수 있는 작은 일부터 하나씩 해봐요. 매일 벽돌 한 장씩 쌓으면 언젠가 멋진 성이 되는 거예요. 오늘 코드 한 줄, 전화 한 통, 책 한 페이지 — 그게 모여서 여러분의 미래가 돼요!'}
+      ]
+    },
+    closing: '오늘의 이야기는 여기까지예요!<br><br>아침마다 이 글을 한 번 읽으면서<br>마음을 가다듬어 보세요.<br>그리고 오늘 하루도 씩씩하게 보내세요!<br><br>여러분은 할 수 있어요.<br>여러분의 충실한 참모, 제갈량이<br>언제나 응원하고 있답니다!',
+    quotes: [
+      '마음이 고요해야 멀리 볼 수 있어요. 조급해하지 마세요.',
+      '큰일은 작은 일을 잘하는 데서 시작돼요.',
+      '사람의 진짜 모습은 어려울 때 드러나요.',
+      '직접 해보지 않으면 모르는 거예요. 일단 도전해보세요!',
+      '똑똑한 사람은 때를 기다릴 줄 알아요.',
+      '작은 구멍 하나가 큰 둑을 무너뜨려요. 사소한 것도 소홀히 하지 마세요.',
+      '비가 오기 전에 우산을 준비하는 게 진짜 지혜예요.',
+      '좋은 충고는 듣기 싫어도 결국 도움이 돼요.',
+      '혼자 잘하는 것보다 함께 잘하는 게 더 멀리 가요.',
+      '어제의 실패가 오늘의 선생님이에요.',
+      '급할수록 돌아가세요. 빠른 길이 항상 좋은 길은 아니에요.',
+      '나를 아는 게 제일 먼저예요. 나를 알아야 세상도 보여요.',
+      '작은 약속을 지키는 사람이 큰 일도 해낼 수 있어요.',
+      '나무는 뿌리가 깊어야 바람에 안 흔들려요. 기본이 중요해요.',
+      '오늘 심은 씨앗이 내일 바로 열매가 되진 않아요. 기다릴 줄 알아요.'
+    ],
+    m1: ['네! 명심하겠습니다!','승상님 말씀에 감동입니다!','오늘도 열심히 하겠습니다!','끝까지 따르겠습니다!','꼭 실천하겠습니다!','잊지 않겠습니다!','저도 그렇게 하겠습니다!','가슴에 새기겠습니다!'],
+    m2: ['깊은 말씀이십니다...','오늘도 배움이 있습니다','정말 그렇습니다, 승상님','마음에 새기겠습니다','좋은 가르침이십니다','마음에 와닿습니다','참으로 옳으신 말씀...','제 부족함을 느낍니다'],
+    m3: ['와, 정말 그렇네요!','저도 해볼래요!','역시 승상님이세요!','대단하십니다!','저도 열심히 할게요!','오늘 바로 시작할래요!','멋진 말씀이에요!','완전 공감이에요!'],
+    m4: ['허허, 지당하신 말씀이오','노신도 동감하오이다','세월이 증명하는 진리요','깊이 공감하오','경험에서 우러나온 지혜...','참으로 그러하오','오래 살아도 배움이 있소','명심하고 또 명심하리다']
+  };
+
+  // ── Date rendering ──
+  var stems = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+  var branches = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+  var mNames = ['','正','二','三','四','五','六','七','八','九','十','十一','十二'];
   function cn(n){var c=['','一','二','三','四','五','六','七','八','九','十'];if(n<=10)return c[n];if(n<20)return'十'+c[n-10];if(n===20)return'二十';if(n<30)return'二十'+c[n-20];if(n===30)return'三十';return'三十'+c[n-30]}
-  var d=new Date(),y=d.getFullYear();
-  var ds=stems[(y-4)%10]+branches[(y-4)%12]+'年 '+mNames[d.getMonth()+1]+'月 '+cn(d.getDate())+'日';
-  document.getElementById('heroDate').textContent=ds;
-  document.getElementById('closingDate').textContent=ds+' 臥龍 諸葛亮 拜上';
 
-  // Zhuge Liang daily quotes
-  var q=[
-    '마음이 고요해야 멀리 볼 수 있어요. 조급해하지 마세요.',
-    '큰일은 작은 일을 잘하는 데서 시작돼요.',
-    '사람의 진짜 모습은 어려울 때 드러나요.',
-    '직접 해보지 않으면 모르는 거예요. 일단 도전해보세요!',
-    '똑똑한 사람은 때를 기다릴 줄 알아요.',
-    '작은 구멍 하나가 큰 둑을 무너뜨려요. 사소한 것도 소홀히 하지 마세요.',
-    '비가 오기 전에 우산을 준비하는 게 진짜 지혜예요.',
-    '좋은 충고는 듣기 싫어도 결국 도움이 돼요.',
-    '혼자 잘하는 것보다 함께 잘하는 게 더 멀리 가요.',
-    '어제의 실패가 오늘의 선생님이에요.',
-    '급할수록 돌아가세요. 빠른 길이 항상 좋은 길은 아니에요.',
-    '나를 아는 게 제일 먼저예요. 나를 알아야 세상도 보여요.',
-    '작은 약속을 지키는 사람이 큰 일도 해낼 수 있어요.',
-    '나무는 뿌리가 깊어야 바람에 안 흔들려요. 기본이 중요해요.',
-    '오늘 심은 씨앗이 내일 바로 열매가 되진 않아요. 기다릴 줄 알아요.',
-    '넘어진 자리에서 뭘 배우느냐가 그 사람의 그릇을 결정해요.',
-    '말보다 행동이 중요해요. 보여주는 게 제일 확실해요.',
-    '건강이 제일 중요해요. 몸이 망가지면 아무것도 못 해요.',
-    '남을 바꾸려 하기 전에 먼저 나를 바꿔봐요.',
-    '세상을 바꾸고 싶으면 먼저 내 방부터 정리하세요.',
-    '한 번 이겼다고 자만하지 말고, 한 번 졌다고 포기하지 마세요.',
-    '겸손한 사람이 결국 가장 멀리 가요.',
-    '매일 한 걸음씩 가면 천 리도 갈 수 있어요.',
-    '꿈은 크게, 시작은 작게, 실천은 꾸준히!',
-    '좋은 친구 한 명이 금은보화보다 귀해요.',
-    '모르면 물어보세요. 모르는 걸 부끄러워하지 마세요.',
-    '어둠 속에서 길을 잃으면, 멈추고 별을 봐요. 답이 보일 거예요.',
-    '완벽하지 않아도 괜찮아요. 시작하는 게 중요해요.',
-    '감사하는 마음이 있으면, 작은 것도 큰 행복이 돼요.',
-    '오늘 하루도 최선을 다했으면 그걸로 충분해요.',
-    '천하의 큰일은 작고 꼼꼼한 데서 시작돼요.'
-  ];
+  var d = new Date(), y = d.getFullYear();
+  var dateStr = stems[(y-4)%10]+branches[(y-4)%12]+'年 '+mNames[d.getMonth()+1]+'月 '+cn(d.getDate())+'日';
+  var dayOfYear = Math.floor((d - new Date(y,0,0)) / 864e5);
 
-  // Minister dialogue (rotates daily)
-  var m1=[
-    '네! 명심하겠습니다!','승상님 말씀에 감동입니다!','오늘도 열심히 하겠습니다!',
-    '끝까지 따르겠습니다!','꼭 실천하겠습니다!','잊지 않겠습니다!',
-    '저도 그렇게 하겠습니다!','가슴에 새기겠습니다!','반드시 지키겠습니다!',
-    '힘내겠습니다, 승상님!','감사합니다, 승상님!','큰 가르침입니다!',
-    '다짐 또 다짐합니다!','정말 맞는 말씀이에요!','알겠습니다, 승상님!'
-  ];
-  var m2=[
-    '깊은 말씀이십니다...','오늘도 배움이 있습니다','정말 그렇습니다, 승상님',
-    '마음에 새기겠습니다','좋은 가르침이십니다','마음에 와닿습니다',
-    '참으로 옳으신 말씀...','제 부족함을 느낍니다','곰곰이 생각해보겠습니다',
-    '뜻깊은 말씀이시네요','지혜로운 말씀입니다','겸허히 받아들이겠습니다',
-    '묵직한 가르침입니다','가만히 되새겨봅니다','진심으로 공감합니다'
-  ];
-  var m3=[
-    '와, 정말 그렇네요!','저도 해볼래요!','역시 승상님이세요!',
-    '대단하십니다!','저도 열심히 할게요!','오늘 바로 시작할래요!',
-    '멋진 말씀이에요!','완전 공감이에요!','저도 그 생각이었어요!',
-    '진짜 최고예요, 승상님!','아, 그렇구나!','빨리 해보고 싶어요!',
-    '너무 좋은 말씀이에요!','오늘의 최고 조언이에요!','힘이 나는 말씀이에요!'
-  ];
-  var m4=[
-    '허허, 지당하신 말씀이오','노신도 동감하오이다','세월이 증명하는 진리요',
-    '깊이 공감하오','경험에서 우러나온 지혜...','참으로 그러하오',
-    '오래 살아도 배움이 있소','명심하고 또 명심하리다','역시 승상의 혜안이오',
-    '후학들이 새겨야 할 말씀','오늘도 가르침을 받소이다','이 노인도 고개를 숙이오',
-    '젊은이들이 들어야 할 말씀','한 수 배우겠소이다','참된 지혜의 말씀이오'
-  ];
+  document.getElementById('heroDate').textContent = dateStr;
+  document.getElementById('closingDate').textContent = dateStr + ' 臥龍 諸葛亮 拜上';
 
-  var day=Math.floor((d-new Date(y,0,0))/864e5);
-  document.getElementById('quoteText').textContent=q[day%q.length];
-  document.getElementById('m1Text').textContent=m1[day%m1.length];
-  document.getElementById('m2Text').textContent=m2[day%m2.length];
-  document.getElementById('m3Text').textContent=m3[day%m3.length];
-  document.getElementById('m4Text').textContent=m4[day%m4.length];
+  // ── Render content ──
+  function renderContent(data) {
+    document.getElementById('greetingEl').textContent = data.greeting || DEFAULT.greeting;
+    document.getElementById('openingEl').textContent = data.opening || DEFAULT.opening;
+
+    var badge = document.getElementById('topicBadge');
+    if (data.topic) { badge.textContent = data.topic; badge.hidden = false; }
+    else { badge.hidden = true; }
+
+    renderSection('s1', data.section1 || DEFAULT.section1);
+    renderSection('s2', data.section2 || DEFAULT.section2);
+
+    var closingEl = document.getElementById('closingText');
+    closingEl.innerHTML = data.closing || DEFAULT.closing;
+
+    var quotes = data.quotes && data.quotes.length ? data.quotes : DEFAULT.quotes;
+    document.getElementById('quoteText').textContent = quotes[dayOfYear % quotes.length];
+
+    var sets = [
+      {id:'m1Text', arr: data.m1 && data.m1.length ? data.m1 : DEFAULT.m1},
+      {id:'m2Text', arr: data.m2 && data.m2.length ? data.m2 : DEFAULT.m2},
+      {id:'m3Text', arr: data.m3 && data.m3.length ? data.m3 : DEFAULT.m3},
+      {id:'m4Text', arr: data.m4 && data.m4.length ? data.m4 : DEFAULT.m4}
+    ];
+    sets.forEach(function(s){ document.getElementById(s.id).textContent = s.arr[dayOfYear % s.arr.length]; });
+  }
+
+  function renderSection(prefix, sec) {
+    document.getElementById(prefix+'Label').textContent = sec.label || '';
+    var titleEl = document.getElementById(prefix+'Title');
+    titleEl.innerHTML = '';
+    titleEl.appendChild(document.createTextNode(sec.title || ''));
+    if (sec.hanja) {
+      var span = document.createElement('span');
+      span.className = 'hanja';
+      span.textContent = sec.hanja;
+      titleEl.appendChild(span);
+    }
+    document.getElementById(prefix+'Desc').textContent = sec.desc || '';
+    document.getElementById(prefix+'Intro').textContent = sec.intro || '';
+
+    var container = document.getElementById(prefix+'Points');
+    container.innerHTML = '';
+    (sec.points || []).forEach(function(pt) {
+      var div = document.createElement('div');
+      div.className = 'point';
+      var h = document.createElement('p');
+      h.className = 'point-title';
+      h.textContent = pt.title;
+      var p = document.createElement('p');
+      p.textContent = pt.body;
+      div.appendChild(h);
+      div.appendChild(p);
+      container.appendChild(div);
+    });
+  }
+
+  // ── Initial render with default ──
+  renderContent(DEFAULT);
+
+  // ── Capabilities init ──
+  if (window.claude) {
+    Promise.all([
+      window.claude.use('sample').catch(function(){ return null; }),
+      window.claude.use('db').catch(function(){ return null; })
+    ]).then(function(caps) {
+      var sampleCap = caps[0], dbCap = caps[1];
+
+      if (dbCap) {
+        dbCap.doc('content/current').get().then(function(snap) {
+          if (snap.exists) renderContent(snap.data());
+        }).catch(function(){});
+      }
+
+      if (sampleCap) {
+        var btn = document.getElementById('topicBtn');
+        btn.hidden = false;
+
+        btn.onclick = function() {
+          document.getElementById('modalOverlay').hidden = false;
+          document.getElementById('topicInput').value = '';
+          document.getElementById('genStatus').hidden = true;
+          document.getElementById('generateBtn').disabled = false;
+          document.getElementById('topicInput').focus();
+        };
+
+        document.getElementById('cancelBtn').onclick = function() {
+          document.getElementById('modalOverlay').hidden = true;
+          if (currentCtl) currentCtl.abort();
+        };
+
+        document.getElementById('modalOverlay').onclick = function(e) {
+          if (e.target === document.getElementById('modalOverlay')) {
+            document.getElementById('modalOverlay').hidden = true;
+            if (currentCtl) currentCtl.abort();
+          }
+        };
+
+        var currentCtl = null;
+        document.getElementById('generateBtn').onclick = function() {
+          var topic = document.getElementById('topicInput').value.trim();
+          if (!topic) return;
+
+          document.getElementById('generateBtn').disabled = true;
+          document.getElementById('genStatus').hidden = false;
+          document.getElementById('genText').textContent = '제갈량이 생각하는 중...';
+
+          currentCtl = new AbortController();
+
+          var prompt = '당신은 제갈량(諸葛亮)입니다. 삼국지 시대의 전설적인 전략가이자 승상으로서, 현대인에게 조언하는 상소문을 작성합니다.\n\n'
+            + '[주제]: ' + topic + '\n\n'
+            + '다음 JSON 형식으로만 응답하세요. 다른 텍스트 없이 JSON만 출력하세요:\n'
+            + '{\n'
+            + '  "greeting": "인사말 (1문장, 해요체)",\n'
+            + '  "opening": "도입부 (3-4문장, 해요체, 오늘의 주제를 소개)",\n'
+            + '  "section1": {\n'
+            + '    "label": "第一章",\n'
+            + '    "title": "섹션1 제목 (주제의 실용적/기술적 측면)",\n'
+            + '    "hanja": "(한자 부제)",\n'
+            + '    "desc": "간단한 설명 (1문장)",\n'
+            + '    "intro": "섹션 도입 (2-3문장)",\n'
+            + '    "points": [\n'
+            + '      {"title": "첫째, ...", "body": "상세 설명 (3-5문장, 비유와 예시 포함)"},\n'
+            + '      ... (총 5개)\n'
+            + '    ]\n'
+            + '  },\n'
+            + '  "section2": {\n'
+            + '    "label": "第二章",\n'
+            + '    "title": "섹션2 제목 (주제의 인생/철학적 측면)",\n'
+            + '    "hanja": "(한자 부제)",\n'
+            + '    "desc": "간단한 설명 (1문장)",\n'
+            + '    "intro": "섹션 도입 (2-3문장)",\n'
+            + '    "points": [\n'
+            + '      {"title": "첫째, ...", "body": "상세 설명 (3-5문장, 삼국지 일화 연결)"},\n'
+            + '      ... (총 7개)\n'
+            + '    ]\n'
+            + '  },\n'
+            + '  "closing": "마무리 인사 (HTML <br> 태그로 줄바꿈, 따뜻한 격려)",\n'
+            + '  "quotes": ["명언1", "명언2", ... (총 15개, 주제 관련 제갈량 스타일 격언)],\n'
+            + '  "m1": ["장수의 충성스러운 반응 8개"],\n'
+            + '  "m2": ["참모1의 사려깊은 반응 8개"],\n'
+            + '  "m3": ["참모2의 활기찬 반응 8개"],\n'
+            + '  "m4": ["원로대신의 어르신 말투 반응 8개"]\n'
+            + '}\n\n'
+            + '규칙:\n'
+            + '- 해요체로 초등학생도 이해할 수 있게 쉽게 작성\n'
+            + '- 총 본문 5000자 이상\n'
+            + '- 삼국지 시대 일화와 현대 비유를 섞어서 생생하게\n'
+            + '- 각 포인트의 body는 반드시 3문장 이상\n'
+            + '- closing의 줄바꿈에는 <br> HTML 태그 사용';
+
+          sampleCap.json(prompt, {
+            signal: currentCtl.signal,
+            cache: false,
+            onText: function(u) {
+              var preview = u.text.length > 80 ? u.text.slice(0, 80) + '...' : u.text;
+              document.getElementById('genText').textContent = '작성 중: ' + preview;
+            }
+          }).then(function(data) {
+            data.topic = topic;
+
+            if (dbCap) {
+              dbCap.doc('content/current').set(data).catch(function(){});
+            }
+
+            renderContent(data);
+            document.getElementById('modalOverlay').hidden = true;
+          }).catch(function(e) {
+            if (e.code === 'cancelled') return;
+            document.getElementById('genText').textContent =
+              e.code === 'not_granted' ? '클로드 사용이 허용되지 않았습니다.' :
+              e.code === 'rate_limited' ? '요청이 너무 많습니다. 잠시 후 다시 시도해주세요.' :
+              '오류가 발생했습니다. 다시 시도해주세요.';
+            document.getElementById('generateBtn').disabled = false;
+          });
+        };
+      }
+    });
+  }
 })();
 </script>
