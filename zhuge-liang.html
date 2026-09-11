@@ -217,6 +217,8 @@
   }
   .topic-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px var(--shadow-md)}
   .topic-btn:active{transform:translateY(0)}
+  .reset-btn{right:auto;left:28px;background:var(--bg-alt);color:var(--text-dim);border:1.5px solid var(--modal-border)}
+  .reset-btn:hover{background:var(--rule-faint)}
 
   .modal-overlay{
     position:fixed;inset:0;z-index:200;background:var(--overlay);
@@ -273,6 +275,7 @@
     .point-title{font-size:16px}
     .point p,.opening p,.section-intro,.closing-text{font-size:15px}
     .topic-btn{bottom:16px;right:16px;padding:12px 20px;font-size:13px}
+    .reset-btn{right:auto;left:16px}
     .modal{padding:24px}
   }
 
@@ -644,6 +647,7 @@
 </div>
 
 <!-- Topic change button -->
+<button class="topic-btn reset-btn" id="resetBtn" hidden>기본 내용</button>
 <button class="topic-btn" id="topicBtn" hidden>주제 변경</button>
 
 <!-- Modal -->
@@ -746,6 +750,10 @@
   document.getElementById('heroDate').textContent = dateStr;
   document.getElementById('closingDate').textContent = dateStr + ' 臥龍 諸葛亮 拜上';
 
+  // ── Validation helpers ──
+  function validSec(s) { return s && s.points && s.points.length > 0; }
+  function validStrat(s) { return s && s.steps && s.steps.length > 0; }
+
   // ── Render content ──
   function renderContent(data) {
     document.getElementById('greetingEl').textContent = data.greeting || DEFAULT.greeting;
@@ -755,9 +763,9 @@
     if (data.topic) { badge.textContent = data.topic; badge.hidden = false; }
     else { badge.hidden = true; }
 
-    renderSection('s1', data.section1 || DEFAULT.section1);
-    renderSection('s2', data.section2 || DEFAULT.section2);
-    renderStrategy(data.strategy || DEFAULT.strategy);
+    renderSection('s1', validSec(data.section1) ? data.section1 : DEFAULT.section1);
+    renderSection('s2', validSec(data.section2) ? data.section2 : DEFAULT.section2);
+    renderStrategy(validStrat(data.strategy) ? data.strategy : DEFAULT.strategy);
 
     var closingEl = document.getElementById('closingText');
     closingEl.innerHTML = data.closing || DEFAULT.closing;
@@ -861,9 +869,20 @@
 
       if (dbCap) {
         dbCap.doc('content/current').get().then(function(snap) {
-          if (snap.exists) renderContent(snap.data());
+          if (snap.exists) {
+            var saved = snap.data();
+            if (validSec(saved.section1) || validSec(saved.section2) || saved.greeting) {
+              renderContent(saved);
+              document.getElementById('resetBtn').hidden = false;
+            }
+          }
         }).catch(function(){});
       }
+
+      document.getElementById('resetBtn').onclick = function() {
+        renderContent(DEFAULT);
+        document.getElementById('resetBtn').hidden = true;
+      };
 
       if (sampleCap) {
         var btn = document.getElementById('topicBtn');
@@ -972,6 +991,7 @@
             }
 
             renderContent(data);
+            document.getElementById('resetBtn').hidden = false;
             document.getElementById('modalOverlay').hidden = true;
           }).catch(function(e) {
             if (e.code === 'cancelled') return;
